@@ -1,0 +1,38 @@
+//
+//  PrefixHeader.pch
+//  nangang2.0
+//
+//  Created by 周家新 on 17/7/20.
+//  Copyright © 2017年 Zhou. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import "UIView+HUD.h"
+#import "MJRefresh.h"
+#import "MJExtension.h"
+#import "AFNetworking.h"
+#import "Constant.h"
+///#import "UIImageView+AFNetworking.h"
+//#import "UIKit+AFNetworking.h"
+//#import "NSObject+AFNetWorking.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "MBProgressHUD.h"
+#define HDT_MBPRGRESSBAR_NOTCANCEL 1001 //MBprogressbar 点击不能取消 必须等到调用【HUD hide】
+#define HOSTURL @"http://222.184.127.50:10070"
+#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+
+#define RGB(r, g, b) RGBA(r, g, b, 1.0f)
+#define ThemeColor RGB(71,144,255)
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define KEY_ACCESSTOKEN @"access_token"
+
+#define KEY_TOKEN @"token"
+#define GETTOKEN  [[NSUserDefaults standardUserDefaults] objectForKey:KEY_TOKEN]
+#define GETACCESSTOKEN  [[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCESSTOKEN]
+// 宏定义一个方法,括号里面是方法的参数
+#define LOGINDEFAULTS [NSUserDefaults standardUserDefaults]
+#endif /* PrefixHeader_pch */
