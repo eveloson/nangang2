@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  hagjj
+
+  Created by wubin on 2017/6/23.
+  Copyright © 2017年 clkeji. All rights reserved.
+*/
+"%@ can't be empty" = "%@ 不能为空";
+"XLFormViewController_ValidationErrorTitle" = "失败";
+"Cancel" = "取消";
+"Invalid email address" = "不合法的邮箱地址";

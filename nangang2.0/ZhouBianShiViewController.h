@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ZhouBianShiViewController : UIViewController
+#import "NodeFatherViewController.h"
+@interface ZhouBianShiViewController : NodeFatherViewController
 
 @end
