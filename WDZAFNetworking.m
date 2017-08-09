@@ -148,12 +148,12 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         WLog(@"%@",error);
+        [SVProgressHUD dismiss];
         if (errorMsg != nil) {
             [SVProgressHUD showErrorWithStatus:errorMsg];
         }
         if (failure) {
             failure(task,error);
-            [SVProgressHUD dismiss];
         }
     }];
 }

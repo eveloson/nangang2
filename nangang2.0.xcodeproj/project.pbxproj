@@ -32,6 +32,7 @@
 		44E325A01F385C12001E4C46 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E3259E1F385C12001E4C46 /* NewsCell.xib */; };
 		44E325A31F385D66001E4C46 /* ZCFGDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E325A21F385D66001E4C46 /* ZCFGDetail.m */; };
 		44E6CB5B1F3AB97500BEB5ED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44E6CB5D1F3AB97500BEB5ED /* Localizable.strings */; };
+		44E6CB611F3AE87200BEB5ED /* ZCFGDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E6CB601F3AE87200BEB5ED /* ZCFGDetailViewController.m */; };
 		74040ADC1F330464009B246E /* addsuqiuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74040ADA1F330464009B246E /* addsuqiuViewController.m */; };
 		74040ADD1F330464009B246E /* addsuqiuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74040ADB1F330464009B246E /* addsuqiuViewController.xib */; };
 		74040AE11F3314F3009B246E /* 11.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 74040AE01F3314F3009B246E /* 11.PNG */; };
@@ -200,6 +201,8 @@
 		44E325A21F385D66001E4C46 /* ZCFGDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFGDetail.m; sourceTree = "<group>"; };
 		44E6CB5C1F3AB97500BEB5ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		44E6CB5E1F3AB98500BEB5ED /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		44E6CB5F1F3AE87200BEB5ED /* ZCFGDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFGDetailViewController.h; sourceTree = "<group>"; };
+		44E6CB601F3AE87200BEB5ED /* ZCFGDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFGDetailViewController.m; sourceTree = "<group>"; };
 		74040AD91F330464009B246E /* addsuqiuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addsuqiuViewController.h; sourceTree = "<group>"; };
 		74040ADA1F330464009B246E /* addsuqiuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addsuqiuViewController.m; sourceTree = "<group>"; };
 		74040ADB1F330464009B246E /* addsuqiuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addsuqiuViewController.xib; sourceTree = "<group>"; };
@@ -674,6 +677,8 @@
 				44E3259E1F385C12001E4C46 /* NewsCell.xib */,
 				745E75C11F20AFEC00283B8C /* ZhouBianShiViewController.h */,
 				745E75C21F20AFEC00283B8C /* ZhouBianShiViewController.m */,
+				44E6CB5F1F3AE87200BEB5ED /* ZCFGDetailViewController.h */,
+				44E6CB601F3AE87200BEB5ED /* ZCFGDetailViewController.m */,
 				446C4EA01F396B1200E991FE /* AddMsgViewController.h */,
 				446C4EA11F396B1200E991FE /* AddMsgViewController.m */,
 			);
@@ -1095,6 +1100,7 @@
 				446C4ED21F39945200E991FE /* LPDPhotoPreviewController.m in Sources */,
 				74040AF51F331CDA009B246E /* yichuliViewController.m in Sources */,
 				7423D3901F13680800BA7D79 /* ViewController.m in Sources */,
+				44E6CB611F3AE87200BEB5ED /* ZCFGDetailViewController.m in Sources */,
 				74BC584A1F2ECE60009F2F67 /* LTPickerView.m in Sources */,
 				44E325A31F385D66001E4C46 /* ZCFGDetail.m in Sources */,
 				745E760A1F20B5FC00283B8C /* MJRefreshAutoNormalFooter.m in Sources */,

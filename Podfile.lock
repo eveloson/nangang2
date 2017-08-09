@@ -1,0 +1,29 @@
+PODS:
+  - IQKeyboardManager (4.0.11)
+  - Masonry (1.0.2)
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
+  - SVProgressHUD (2.1.2)
+  - UIButton-SSEdgeInsets (0.1.7)
+  - XLForm (3.3.0)
+
+DEPENDENCIES:
+  - IQKeyboardManager
+  - Masonry
+  - SDWebImage
+  - SVProgressHUD
+  - UIButton-SSEdgeInsets (~> 0.1.1)
+  - XLForm
+
+SPEC CHECKSUMS:
+  IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  UIButton-SSEdgeInsets: 64a600adc670d98e140ddcde1d0e64d7b952502c
+  XLForm: d5c391dfc62865927b5bcab0a5a0dbfb3e02b0ec
+
+PODFILE CHECKSUM: 5820b7000f3ae52779bf6517e5b454f0de6edc96
+
+COCOAPODS: 1.2.1
