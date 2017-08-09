@@ -10,13 +10,10 @@
 #import "IndexViewController.h"
 #import "PersonCenterViewController.h"
 #import "informationViewController.h"
-#import "dynamicViewController.h"
 
 @interface MainTabBarViewController : UITabBarController<UINavigationControllerDelegate>
 
 @property(nonatomic,retain) IndexViewController *indexController;
 @property(nonatomic,retain) PersonCenterViewController *personController;
 @property(nonatomic,retain) informationViewController *informationController;
-
-@property(nonatomic,retain) dynamicViewController *dynamicController;
 @end

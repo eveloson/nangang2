@@ -13,11 +13,19 @@
 #import "MJExtension.h"
 #import "AFNetworking.h"
 #import "Constant.h"
+#import <SVProgressHUD.h>
+#import "WDZAFNetworking.h"
+//这个宏加上后，可以去掉'mas_'这个前缀了
+#define MAS_SHORTHAND
+//这个宏加上后，可以去掉自动包装方法的'mas_'前缀
+#define MAS_SHORTHAND_GLOBALS
+#import <Masonry.h>
 ///#import "UIImageView+AFNetworking.h"
 //#import "UIKit+AFNetworking.h"
 //#import "NSObject+AFNetWorking.h"
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#define NewsPagesize  @"20"
 #import "MBProgressHUD.h"
 #define HDT_MBPRGRESSBAR_NOTCANCEL 1001 //MBprogressbar 点击不能取消 必须等到调用【HUD hide】
 #define HOSTURL @"http://222.184.127.50:10070"
@@ -35,4 +43,11 @@
 #define GETACCESSTOKEN  [[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCESSTOKEN]
 // 宏定义一个方法,括号里面是方法的参数
 #define LOGINDEFAULTS [NSUserDefaults standardUserDefaults]
+
+#ifdef DEBUG
+#define WLog(...) NSLog(__VA_ARGS__)
+#else
+#define WLog(...)
+#endif
+
 #endif /* PrefixHeader_pch */
