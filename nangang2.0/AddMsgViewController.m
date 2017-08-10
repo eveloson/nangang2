@@ -21,16 +21,16 @@
     // Section0
     section = [XLFormSectionDescriptor formSection];
     // 标题
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"title" rowType:XLFormRowDescriptorTypeText title:@"标题"];
-    [row.cellConfigAtConfigure setValue:@"(选填)" forKey:@"textField.placeholder"];
-    row.cellConfigAtConfigure[@"separatorView"] = [UIView new];
+//    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"title" rowType:XLFormRowDescriptorTypeText title:@"标题"];
+//    [row.cellConfigAtConfigure setValue:@"(选填)" forKey:@"textField.placeholder"];
+//    row.cellConfigAtConfigure[@"separatorView"] = [UIView new];
     //    For right padding :
     //    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
     //    [row.cellConfig setObject:paddingView forKey:@"textField.rightView"];
     //    [row.cellConfig setObject:@(UITextFieldViewModeAlways) forKey:@"textField.rightViewMode"];
-    [row.cellConfigAtConfigure setValue:@(NSTextAlignmentLeft) forKey:@"textField.textAlignment"];
-    row.cellConfig[@"backgroundColor"] = [UIColor clearColor];
-    [section addFormRow:row];
+//    [row.cellConfigAtConfigure setValue:@(NSTextAlignmentLeft) forKey:@"textField.textAlignment"];
+//    row.cellConfig[@"backgroundColor"] = [UIColor clearColor];
+//    [section addFormRow:row];
     //内容
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"content" rowType:XLFormRowDescriptorTypeTextView];
     row.cellConfigAtConfigure[@"separatorView"] = [UIView new];

@@ -80,6 +80,13 @@
 }
 - (void)setNewsInfo:(ZCFGDetail *)newsInfo{
     _newsInfo = newsInfo;
+    self.title.text = newsInfo.Adder;
+    self.content.text = newsInfo.content;
+    self.time.text = newsInfo.fbTime;
+    for (int i=0; i<self.imageArray.count; i++) {
+        UIImageView *image = self.imageArray[i];
+        [image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.2.201:50485%@",newsInfo.ImgUrl]]];
+    }
 //    self.title.text = newsInfo.title;
 //    self.content.text = newsInfo.fbt;
 //    self.time.text = newsInfo.date;

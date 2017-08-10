@@ -33,6 +33,7 @@
 		44E325A31F385D66001E4C46 /* ZCFGDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E325A21F385D66001E4C46 /* ZCFGDetail.m */; };
 		44E6CB5B1F3AB97500BEB5ED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44E6CB5D1F3AB97500BEB5ED /* Localizable.strings */; };
 		44E6CB611F3AE87200BEB5ED /* ZCFGDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E6CB601F3AE87200BEB5ED /* ZCFGDetailViewController.m */; };
+		44E6CB641F3AEC2E00BEB5ED /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E6CB631F3AEC2E00BEB5ED /* ReplyViewController.m */; };
 		74040ADC1F330464009B246E /* addsuqiuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74040ADA1F330464009B246E /* addsuqiuViewController.m */; };
 		74040ADD1F330464009B246E /* addsuqiuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74040ADB1F330464009B246E /* addsuqiuViewController.xib */; };
 		74040AE11F3314F3009B246E /* 11.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 74040AE01F3314F3009B246E /* 11.PNG */; };
@@ -203,6 +204,8 @@
 		44E6CB5E1F3AB98500BEB5ED /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		44E6CB5F1F3AE87200BEB5ED /* ZCFGDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFGDetailViewController.h; sourceTree = "<group>"; };
 		44E6CB601F3AE87200BEB5ED /* ZCFGDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFGDetailViewController.m; sourceTree = "<group>"; };
+		44E6CB621F3AEC2E00BEB5ED /* ReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
+		44E6CB631F3AEC2E00BEB5ED /* ReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
 		74040AD91F330464009B246E /* addsuqiuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addsuqiuViewController.h; sourceTree = "<group>"; };
 		74040ADA1F330464009B246E /* addsuqiuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addsuqiuViewController.m; sourceTree = "<group>"; };
 		74040ADB1F330464009B246E /* addsuqiuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addsuqiuViewController.xib; sourceTree = "<group>"; };
@@ -681,6 +684,8 @@
 				44E6CB601F3AE87200BEB5ED /* ZCFGDetailViewController.m */,
 				446C4EA01F396B1200E991FE /* AddMsgViewController.h */,
 				446C4EA11F396B1200E991FE /* AddMsgViewController.m */,
+				44E6CB621F3AEC2E00BEB5ED /* ReplyViewController.h */,
+				44E6CB631F3AEC2E00BEB5ED /* ReplyViewController.m */,
 			);
 			name = woyaokankanzhoubianshi;
 			sourceTree = "<group>";
@@ -1141,6 +1146,7 @@
 				745E76091F20B5FC00283B8C /* MJRefreshAutoGifFooter.m in Sources */,
 				742B410C1F30A367000BF8E3 /* chakansuqiuViewController.m in Sources */,
 				446C4ECC1F39945200E991FE /* LPDImageManager.m in Sources */,
+				44E6CB641F3AEC2E00BEB5ED /* ReplyViewController.m in Sources */,
 				446C4ED51F39945200E991FE /* LPDVideoPlayerController.m in Sources */,
 				44E325981F3856A2001E4C46 /* WDZAFNetworking.m in Sources */,
 				745E760D1F20B5FC00283B8C /* MJRefreshBackNormalFooter.m in Sources */,

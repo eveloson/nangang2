@@ -5,6 +5,8 @@
 //  Created by 周家新 on 17/7/20.
 //  Copyright © 2017年 Zhou. All rights reserved.
 //
+#import "ZCFGDetailViewController.h"
+#import "ReplyViewController.h"
 #import "NewsCell.h"
 #import "ZhouBianShiViewController.h"
 #import "AddMsgViewController.h"
@@ -13,10 +15,12 @@
 @end
 
 @implementation ZhouBianShiViewController
-int newsPageindex=0;
+int newsPageindex = 0;
 - (void)refreshData{
-    self.dataSource = @[@1,@2,@3,@4,@5];
-//    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",HOSTURL,@"GetNewsList"] parameters:@{@"Typeid":[NSString stringWithFormat:@"%ld",self.view.tag],@"pageindex":@"0",@"pagesize":NewsPagesize} success:^(id  _Nonnull json) {
+    [self.dataSource removeAllObjects];
+    newsPageindex = 0;
+    [self loadMoreData];
+    //    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",HOSTURL,@"GetNewsList"] parameters:@{@"Typeid":[NSString stringWithFormat:@"%ld",self.view.tag],@"pageindex":@"0",@"pagesize":NewsPagesize} success:^(id  _Nonnull json) {
 ////        self.dataSource = [[ZCFGDetail objectArrayWithKeyValuesArray:json[@"data"]] mutableCopy];
 //        if ([json[@"status"] isEqualToString:@"sucess"]) {
 //            newsPageindex = 0;
@@ -28,9 +32,9 @@ int newsPageindex=0;
 }
 - (void)loadMoreData{
     [super loadMoreData];
-    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",HOSTURL,@"GetNewsList"] parameters:@{@"Typeid":[NSString stringWithFormat:@"%ld",self.view.tag],@"pagesize":NewsPagesize,@"pageindex":[NSString stringWithFormat:@"%d",newsPageindex+1]} success:^(id  _Nonnull json) {
-        if ([json[@"status"] isEqualToString:@"sucess"]) {
-            NSArray *dataArray = [ZCFGDetail objectArrayWithKeyValuesArray:json[@"data"]];
+    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"huoquTalk"] parameters:@{@"Typeid":[NSString stringWithFormat:@"%ld",self.view.tag],@"pagesize":NewsPagesize,@"pageindex":[NSString stringWithFormat:@"%d",newsPageindex+1]} success:^(id  _Nonnull json) {
+        if ([json[@"result"] isEqualToString:@"success"]) {
+            NSArray *dataArray = [ZCFGDetail objectArrayWithKeyValuesArray:json[@"Rows"]];
             [self.dataSource insertObjects:dataArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(self.dataSource.count, dataArray.count)]];
             [self.tableView reloadData];
             newsPageindex++;
@@ -51,11 +55,12 @@ int newsPageindex=0;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NewsCell *cell = [NewsCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.newsInfo = self.dataSource[indexPath.section];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self tableView:tableView didDeselectRowAtIndexPath:indexPath];
-    
+    push([ZCFGDetailViewController new]);
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"动态详情";
     [self setupView];
     [self setupData];
 }
@@ -39,7 +40,7 @@
     self.titleLabel = titleLabel;
     self.titleLabel.numberOfLines = 0;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.titleLabel.text = self.zcfgDetail.title;
+//    self.titleLabel.text = self.zcfgDetail.title;
     
     UILabel *timeLabel = [[UILabel alloc] init];
     [self.view addSubview:timeLabel];
@@ -47,7 +48,7 @@
     timeLabel.textColor = [UIColor lightGrayColor];
     timeLabel.textAlignment = NSTextAlignmentCenter;
     self.timeLabel = timeLabel;
-    self.timeLabel.text = [NSString stringWithFormat:@"发布时间 %@",self.zcfgDetail.date];
+//    self.timeLabel.text = [NSString stringWithFormat:@"发布时间 %@",self.zcfgDetail.date];
     
     UIView *line = [[UIView alloc] init];
     line.backgroundColor = RGB(210, 210, 210);
@@ -62,7 +63,6 @@
     [self.view addSubview:webView];
     self.webView = webView;
     self.webView.scrollView.bounces = false;
-    
     [self setupConstraint];
 }
 - (void)setupData{
