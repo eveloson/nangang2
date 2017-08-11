@@ -35,14 +35,10 @@
         return self.dataSource.count;
     }
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (indexPath == 0) {
-        NewsCell *cell = [NewsCell cellWithTableView:tableView];
-        cell.newsInfo = self.detail;
-        return cell;
-//    } else {
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if (indexPath.section == 0) {
 //        
 //    }
-}
+//}
 
 @end

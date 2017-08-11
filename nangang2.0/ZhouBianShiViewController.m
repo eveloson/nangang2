@@ -32,7 +32,7 @@ int newsPageindex = 0;
 }
 - (void)loadMoreData{
     [super loadMoreData];
-    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"huoquTalk"] parameters:@{@"Typeid":[NSString stringWithFormat:@"%ld",self.view.tag],@"pagesize":NewsPagesize,@"pageindex":[NSString stringWithFormat:@"%d",newsPageindex+1]} success:^(id  _Nonnull json) {
+    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"huoquTalk"] parameters:@{@"pagesize":NewsPagesize,@"pageindex":[NSString stringWithFormat:@"%d",newsPageindex+1]} success:^(id  _Nonnull json) {
         if ([json[@"result"] isEqualToString:@"success"]) {
             NSArray *dataArray = [ZCFGDetail objectArrayWithKeyValuesArray:json[@"Rows"]];
             [self.dataSource insertObjects:dataArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(self.dataSource.count, dataArray.count)]];
@@ -49,20 +49,27 @@ int newsPageindex = 0;
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return kHeadTMargin+kHeadH+kContentTMargin+kContentH+kImageHW+kTimeH;
+//    return kHeadTMargin+kHeadH+kContentTMargin+kContentH+kImageHW+kTimeH;
+    return [tableView fd_heightForCellWithIdentifier:NSStringFromClass([NewsCell class]) configuration:^(NewsCell *cell) {
+        cell.newsInfo = self.dataSource[indexPath.section];
+    }];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 10;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NewsCell *cell = [NewsCell cellWithTableView:tableView];
+    NewsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NewsCell class])];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([NewsCell class]) owner:nil options:nil] lastObject];
+    }
+//    NewsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NewsCell class]) forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.newsInfo = self.dataSource[indexPath.section];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self tableView:tableView didDeselectRowAtIndexPath:indexPath];
-    push([ZCFGDetailViewController new]);
+//    push([ZCFGDetailViewController new]);
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -70,6 +77,7 @@ int newsPageindex = 0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addMsg)];
     [self refreshData];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([NewsCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([NewsCell class])];
 }
 
 - (void)addMsg{
