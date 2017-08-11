@@ -16,6 +16,7 @@
 #import <SVProgressHUD.h>
 #import <UIImageView+WebCache.h>
 #import "WDZAFNetworking.h"
+#import <UITableView+FDTemplateLayoutCell.h>
 //这个宏加上后，可以去掉'mas_'这个前缀了
 #define MAS_SHORTHAND
 //这个宏加上后，可以去掉自动包装方法的'mas_'前缀

@@ -39,9 +39,11 @@ int newsPageindex = 0;
             [self.tableView reloadData];
             newsPageindex++;
         }
+        [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
     } loadingMsg:@"正在加载ing" errorMsg:nil];
     

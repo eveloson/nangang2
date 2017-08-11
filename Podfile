@@ -12,4 +12,5 @@ target 'nangang2.0' do
   pod 'IQKeyboardManager'
   pod 'SDWebImage'
   pod 'UIButton-SSEdgeInsets', '~> 0.1.1'
+  pod 'UITableView+FDTemplateLayoutCell', '~> 1.6'
 end

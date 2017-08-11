@@ -1,13 +1,14 @@
 //
 //  ZCFGDetailViewController.h
-//  AutoLayout
+//  nangang2.0
 //
-//  Created by wubin on 2017/5/5.
-//  Copyright © 2017年 wubin. All rights reserved.
+//  Created by wubin on 2017/8/10.
+//  Copyright © 2017年 Zhou. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "ZCFGDetail.h"
-@interface ZCFGDetailViewController : UIViewController
-@property (nonatomic, strong) ZCFGDetail *zcfgDetail;
+#import "NewsCell.h"
+@interface ZCFGDetailViewController : UITableViewController
+@property (nonatomic, strong)  ZCFGDetail *detail;
 @end
