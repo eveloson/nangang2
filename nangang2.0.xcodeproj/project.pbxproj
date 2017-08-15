@@ -160,6 +160,8 @@
 		7461ECB31F25A49D0054F403 /* xingming.png in Resources */ = {isa = PBXBuildFile; fileRef = 7461ECB21F25A49D0054F403 /* xingming.png */; };
 		7461ECB51F25A8440054F403 /* btnDL.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7461ECB41F25A8440054F403 /* btnDL.PNG */; };
 		7461ECB71F25CB100054F403 /* btnZC.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 7461ECB61F25CB100054F403 /* btnZC.PNG */; };
+		7467A0F51F42875C009E0B15 /* CLizhongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7467A0F31F42875C009E0B15 /* CLizhongCell.m */; };
+		7467A0F61F42875C009E0B15 /* CLizhongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7467A0F41F42875C009E0B15 /* CLizhongCell.xib */; };
 		746E5C691F3D436E00D88C15 /* chulizhongView.m in Sources */ = {isa = PBXBuildFile; fileRef = 746E5C671F3D436E00D88C15 /* chulizhongView.m */; };
 		746E5C6A1F3D436E00D88C15 /* chulizhongView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 746E5C681F3D436E00D88C15 /* chulizhongView.xib */; };
 		74BC584A1F2ECE60009F2F67 /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BC58481F2ECE60009F2F67 /* LTPickerView.m */; };
@@ -435,6 +437,9 @@
 		7461ECB21F25A49D0054F403 /* xingming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xingming.png; sourceTree = "<group>"; };
 		7461ECB41F25A8440054F403 /* btnDL.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnDL.PNG; sourceTree = "<group>"; };
 		7461ECB61F25CB100054F403 /* btnZC.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnZC.PNG; sourceTree = "<group>"; };
+		7467A0F21F42875C009E0B15 /* CLizhongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLizhongCell.h; sourceTree = "<group>"; };
+		7467A0F31F42875C009E0B15 /* CLizhongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLizhongCell.m; sourceTree = "<group>"; };
+		7467A0F41F42875C009E0B15 /* CLizhongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLizhongCell.xib; sourceTree = "<group>"; };
 		746E5C661F3D436E00D88C15 /* chulizhongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chulizhongView.h; sourceTree = "<group>"; };
 		746E5C671F3D436E00D88C15 /* chulizhongView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chulizhongView.m; sourceTree = "<group>"; };
 		746E5C681F3D436E00D88C15 /* chulizhongView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = chulizhongView.xib; sourceTree = "<group>"; };
@@ -636,6 +641,9 @@
 				7448E11E1F3413B3003BD0D3 /* chuliView.xib */,
 				74040AF01F331CCC009B246E /* chulizhongViewController.h */,
 				74040AF11F331CCC009B246E /* chulizhongViewController.m */,
+				7467A0F21F42875C009E0B15 /* CLizhongCell.h */,
+				7467A0F31F42875C009E0B15 /* CLizhongCell.m */,
+				7467A0F41F42875C009E0B15 /* CLizhongCell.xib */,
 				74614E451F3D5269005D1938 /* chulizhongModel.h */,
 				74614E461F3D5269005D1938 /* chulizhongModel.m */,
 				746E5C661F3D436E00D88C15 /* chulizhongView.h */,
@@ -1068,6 +1076,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				746E5C6A1F3D436E00D88C15 /* chulizhongView.xib in Resources */,
+				7467A0F61F42875C009E0B15 /* CLizhongCell.xib in Resources */,
 				74040AE11F3314F3009B246E /* 11.PNG in Resources */,
 				7423D3981F13680800BA7D79 /* LaunchScreen.storyboard in Resources */,
 				74BC58501F305581009F2F67 /* 1.png in Resources */,
@@ -1273,6 +1282,7 @@
 				745E76371F20B60900283B8C /* MJTypeEncoding.m in Sources */,
 				745E76311F20B60900283B8C /* MJConst.m in Sources */,
 				745E777B1F20E84900283B8C /* UIView+HUD.m in Sources */,
+				7467A0F51F42875C009E0B15 /* CLizhongCell.m in Sources */,
 				745E75C61F20AFFF00283B8C /* XueXueViewController.m in Sources */,
 				745E76041F20B5FC00283B8C /* MJRefreshAutoFooter.m in Sources */,
 				44E3259F1F385C12001E4C46 /* NewsCell.m in Sources */,
