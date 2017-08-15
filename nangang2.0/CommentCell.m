@@ -43,6 +43,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    self.dataSource.count
+    return self.dataSource.count;
 }
 @end
