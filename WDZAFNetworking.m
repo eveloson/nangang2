@@ -142,9 +142,9 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
-        WLog(@"%@",responseObject);
         if (success) {
-            success(responseObject);
+            NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+            success(str);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         WLog(@"%@",error);

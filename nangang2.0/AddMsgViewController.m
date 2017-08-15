@@ -36,6 +36,7 @@
     row.cellConfigAtConfigure[@"separatorView"] = [UIView new];
     row.height = 180;
     row.required = YES;
+    row.requireMsg = @"内容不能为空！";
     [row.cellConfigAtConfigure setObject:@"填写有意思的内容，让大家高兴一下" forKey:@"textView.placeholder"];
     [section addFormRow:row];
     [form addFormSection:section];
@@ -68,7 +69,8 @@
         return;
     }
     [self.tableView endEditing:YES];
-    [WDZAFNetworking post:[NSString stringWithFormat:@"%@%@",HOSTURL,@"Action=addTalk"] images:self.imagesView.selectedPhotos parameters:[self httpParameters] success:^(id  _Nonnull json) {
+    [WDZAFNetworking post:[NSString stringWithFormat:@"%@%@",ServerName,@"addTalk"] images:self.imagesView.selectedPhotos parameters:[self httpParameters] success:^(id  _Nonnull json) {
+        WLog(@"%@",json);
     } failure:nil loadingMsg:@"正在上传ing" errorMsg:@"网络连接错误，请重试"];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

@@ -7,7 +7,7 @@
 //
 #define kHeadTMargin 15
 #define kHeadH 40
-#define kContentTMargin 15
+#define kContentTMargin 10
 #define kContentH 50
 #define kImageLRMargin 30
 #define kImageMargin 15
@@ -17,5 +17,4 @@
 #import "ZCFGDetail.h"
 @interface NewsCell : UITableViewCell
 @property (nonatomic, strong) ZCFGDetail *newsInfo;
-+ (instancetype)cellWithTableView:(UITableView *)tableView;
 @end

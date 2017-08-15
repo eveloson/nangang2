@@ -26,13 +26,13 @@
 		446C4ED61F39945200E991FE /* NSBundle+LPDImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 446C4EC21F39945200E991FE /* NSBundle+LPDImagePicker.m */; };
 		446C4ED71F39945200E991FE /* UIImage+MyBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 446C4EC41F39945200E991FE /* UIImage+MyBundle.m */; };
 		446C4ED81F39945200E991FE /* UIView+HandyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 446C4EC61F39945200E991FE /* UIView+HandyValue.m */; };
+		4471B7BF1F3C468F00137BDE /* ZCFGDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4471B7BE1F3C468F00137BDE /* ZCFGDetailViewController.m */; };
 		44E325981F3856A2001E4C46 /* WDZAFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E325971F3856A2001E4C46 /* WDZAFNetworking.m */; };
 		44E3259B1F3856AD001E4C46 /* NodeFatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E3259A1F3856AD001E4C46 /* NodeFatherViewController.m */; };
 		44E3259F1F385C12001E4C46 /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E3259D1F385C12001E4C46 /* NewsCell.m */; };
 		44E325A01F385C12001E4C46 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E3259E1F385C12001E4C46 /* NewsCell.xib */; };
 		44E325A31F385D66001E4C46 /* ZCFGDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E325A21F385D66001E4C46 /* ZCFGDetail.m */; };
 		44E6CB5B1F3AB97500BEB5ED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44E6CB5D1F3AB97500BEB5ED /* Localizable.strings */; };
-		44E6CB611F3AE87200BEB5ED /* ZCFGDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E6CB601F3AE87200BEB5ED /* ZCFGDetailViewController.m */; };
 		44E6CB641F3AEC2E00BEB5ED /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E6CB631F3AEC2E00BEB5ED /* ReplyViewController.m */; };
 		74040ADC1F330464009B246E /* addsuqiuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74040ADA1F330464009B246E /* addsuqiuViewController.m */; };
 		74040ADD1F330464009B246E /* addsuqiuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74040ADB1F330464009B246E /* addsuqiuViewController.xib */; };
@@ -210,6 +210,8 @@
 		446C4EC41F39945200E991FE /* UIImage+MyBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MyBundle.m"; sourceTree = "<group>"; };
 		446C4EC51F39945200E991FE /* UIView+HandyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HandyValue.h"; sourceTree = "<group>"; };
 		446C4EC61F39945200E991FE /* UIView+HandyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HandyValue.m"; sourceTree = "<group>"; };
+		4471B7BD1F3C468F00137BDE /* ZCFGDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFGDetailViewController.h; sourceTree = "<group>"; };
+		4471B7BE1F3C468F00137BDE /* ZCFGDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFGDetailViewController.m; sourceTree = "<group>"; };
 		44E325961F3856A2001E4C46 /* WDZAFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDZAFNetworking.h; sourceTree = "<group>"; };
 		44E325971F3856A2001E4C46 /* WDZAFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDZAFNetworking.m; sourceTree = "<group>"; };
 		44E325991F3856AD001E4C46 /* NodeFatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeFatherViewController.h; sourceTree = "<group>"; };
@@ -221,8 +223,6 @@
 		44E325A21F385D66001E4C46 /* ZCFGDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFGDetail.m; sourceTree = "<group>"; };
 		44E6CB5C1F3AB97500BEB5ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		44E6CB5E1F3AB98500BEB5ED /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		44E6CB5F1F3AE87200BEB5ED /* ZCFGDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFGDetailViewController.h; sourceTree = "<group>"; };
-		44E6CB601F3AE87200BEB5ED /* ZCFGDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFGDetailViewController.m; sourceTree = "<group>"; };
 		44E6CB621F3AEC2E00BEB5ED /* ReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
 		44E6CB631F3AEC2E00BEB5ED /* ReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
 		74040AD91F330464009B246E /* addsuqiuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addsuqiuViewController.h; sourceTree = "<group>"; };
@@ -740,12 +740,12 @@
 				44E3259E1F385C12001E4C46 /* NewsCell.xib */,
 				745E75C11F20AFEC00283B8C /* ZhouBianShiViewController.h */,
 				745E75C21F20AFEC00283B8C /* ZhouBianShiViewController.m */,
-				44E6CB5F1F3AE87200BEB5ED /* ZCFGDetailViewController.h */,
-				44E6CB601F3AE87200BEB5ED /* ZCFGDetailViewController.m */,
 				446C4EA01F396B1200E991FE /* AddMsgViewController.h */,
 				446C4EA11F396B1200E991FE /* AddMsgViewController.m */,
 				44E6CB621F3AEC2E00BEB5ED /* ReplyViewController.h */,
 				44E6CB631F3AEC2E00BEB5ED /* ReplyViewController.m */,
+				4471B7BD1F3C468F00137BDE /* ZCFGDetailViewController.h */,
+				4471B7BE1F3C468F00137BDE /* ZCFGDetailViewController.m */,
 			);
 			name = woyaokankanzhoubianshi;
 			sourceTree = "<group>";
@@ -1196,7 +1196,6 @@
 				446C4ED21F39945200E991FE /* LPDPhotoPreviewController.m in Sources */,
 				74040AF51F331CDA009B246E /* yichuliViewController.m in Sources */,
 				7423D3901F13680800BA7D79 /* ViewController.m in Sources */,
-				44E6CB611F3AE87200BEB5ED /* ZCFGDetailViewController.m in Sources */,
 				74BC584A1F2ECE60009F2F67 /* LTPickerView.m in Sources */,
 				74534B5F1F41465F000AC5ED /* ZhaoGongView.m in Sources */,
 				44E325A31F385D66001E4C46 /* ZCFGDetail.m in Sources */,
@@ -1270,6 +1269,7 @@
 				745E76301F20B60900283B8C /* MJArgument.m in Sources */,
 				7461ECAE1F2581EF0054F403 /* RegisterViewController.m in Sources */,
 				745E76131F20B5FC00283B8C /* MJRefreshConst.m in Sources */,
+				4471B7BF1F3C468F00137BDE /* ZCFGDetailViewController.m in Sources */,
 				745E76371F20B60900283B8C /* MJTypeEncoding.m in Sources */,
 				745E76311F20B60900283B8C /* MJConst.m in Sources */,
 				745E777B1F20E84900283B8C /* UIView+HUD.m in Sources */,
@@ -1364,7 +1364,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1406,7 +1406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString *AddId;
 @property (nonatomic, copy) NSString *Adder;
 @property (nonatomic, copy) NSString *fbTime;
-@property (nonatomic, strong) NSString *ImgUrl;
-
+@property (nonatomic, strong) NSArray *ImgUrl;
+@property (nonatomic, assign) NSInteger zanmbiancount;
+@property (nonatomic, assign) NSInteger commentcount;
 @end
