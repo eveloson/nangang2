@@ -69,8 +69,17 @@
         return;
     }
     [self.tableView endEditing:YES];
-    [WDZAFNetworking post:[NSString stringWithFormat:@"%@%@",ServerName,@"addTalk"] images:self.imagesView.selectedPhotos parameters:[self httpParameters] success:^(id  _Nonnull json) {
-        WLog(@"%@",json);
+    NSMutableDictionary *para = [[self httpParameters] mutableCopy];
+    NSDictionary *dic = [[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN];
+    NSString *str = [dic objectForKey:@"userid"];
+    para[@"AddId"] = str;
+    [WDZAFNetworking post:[NSString stringWithFormat:@"%@%@",ServerName,@"addTalk"] images:self.imagesView.selectedPhotos parameters:para success:^(id  _Nonnull json) {
+        if ([json[@"result"] isEqualToString:@"success"]) {
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            
+        }
+        
     } failure:nil loadingMsg:@"正在上传ing" errorMsg:@"网络连接错误，请重试"];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

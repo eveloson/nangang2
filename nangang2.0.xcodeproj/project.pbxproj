@@ -27,6 +27,14 @@
 		446C4ED71F39945200E991FE /* UIImage+MyBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 446C4EC41F39945200E991FE /* UIImage+MyBundle.m */; };
 		446C4ED81F39945200E991FE /* UIView+HandyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 446C4EC61F39945200E991FE /* UIView+HandyValue.m */; };
 		4471B7BF1F3C468F00137BDE /* ZCFGDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4471B7BE1F3C468F00137BDE /* ZCFGDetailViewController.m */; };
+		44A091F31F412AD0004B2DA4 /* NewsDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A091F11F412AD0004B2DA4 /* NewsDetailCell.m */; };
+		44A091F41F412AD0004B2DA4 /* NewsDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A091F21F412AD0004B2DA4 /* NewsDetailCell.xib */; };
+		44A091F71F412D99004B2DA4 /* SJAvatarBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A091F61F412D99004B2DA4 /* SJAvatarBrowser.m */; };
+		44A091FB1F413C41004B2DA4 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A091F91F413C41004B2DA4 /* CommentCell.m */; };
+		44A091FC1F413C41004B2DA4 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A091FA1F413C41004B2DA4 /* CommentCell.xib */; };
+		44A092021F41A37F004B2DA4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A092011F41A37F004B2DA4 /* Comment.m */; };
+		44D354321F42862300459B2F /* ReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D354301F42862300459B2F /* ReplyCell.m */; };
+		44D354331F42862300459B2F /* ReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44D354311F42862300459B2F /* ReplyCell.xib */; };
 		44E325981F3856A2001E4C46 /* WDZAFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E325971F3856A2001E4C46 /* WDZAFNetworking.m */; };
 		44E3259B1F3856AD001E4C46 /* NodeFatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E3259A1F3856AD001E4C46 /* NodeFatherViewController.m */; };
 		44E3259F1F385C12001E4C46 /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E3259D1F385C12001E4C46 /* NewsCell.m */; };
@@ -193,6 +201,19 @@
 		446C4EC61F39945200E991FE /* UIView+HandyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HandyValue.m"; sourceTree = "<group>"; };
 		4471B7BD1F3C468F00137BDE /* ZCFGDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFGDetailViewController.h; sourceTree = "<group>"; };
 		4471B7BE1F3C468F00137BDE /* ZCFGDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFGDetailViewController.m; sourceTree = "<group>"; };
+		44A091F01F412AD0004B2DA4 /* NewsDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailCell.h; sourceTree = "<group>"; };
+		44A091F11F412AD0004B2DA4 /* NewsDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailCell.m; sourceTree = "<group>"; };
+		44A091F21F412AD0004B2DA4 /* NewsDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDetailCell.xib; sourceTree = "<group>"; };
+		44A091F51F412D99004B2DA4 /* SJAvatarBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJAvatarBrowser.h; sourceTree = "<group>"; };
+		44A091F61F412D99004B2DA4 /* SJAvatarBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJAvatarBrowser.m; sourceTree = "<group>"; };
+		44A091F81F413C41004B2DA4 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		44A091F91F413C41004B2DA4 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		44A091FA1F413C41004B2DA4 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		44A092001F41A37F004B2DA4 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		44A092011F41A37F004B2DA4 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		44D3542F1F42862300459B2F /* ReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyCell.h; sourceTree = "<group>"; };
+		44D354301F42862300459B2F /* ReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyCell.m; sourceTree = "<group>"; };
+		44D354311F42862300459B2F /* ReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReplyCell.xib; sourceTree = "<group>"; };
 		44E325961F3856A2001E4C46 /* WDZAFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDZAFNetworking.h; sourceTree = "<group>"; };
 		44E325971F3856A2001E4C46 /* WDZAFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDZAFNetworking.m; sourceTree = "<group>"; };
 		44E325991F3856AD001E4C46 /* NodeFatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeFatherViewController.h; sourceTree = "<group>"; };
@@ -673,6 +694,10 @@
 		745E75B81F20AE2C00283B8C /* woyaokankanzhoubianshi */ = {
 			isa = PBXGroup;
 			children = (
+				44A092001F41A37F004B2DA4 /* Comment.h */,
+				44A092011F41A37F004B2DA4 /* Comment.m */,
+				44A091F51F412D99004B2DA4 /* SJAvatarBrowser.h */,
+				44A091F61F412D99004B2DA4 /* SJAvatarBrowser.m */,
 				44E325A11F385D66001E4C46 /* ZCFGDetail.h */,
 				44E325A21F385D66001E4C46 /* ZCFGDetail.m */,
 				44E3259C1F385C12001E4C46 /* NewsCell.h */,
@@ -686,6 +711,15 @@
 				44E6CB631F3AEC2E00BEB5ED /* ReplyViewController.m */,
 				4471B7BD1F3C468F00137BDE /* ZCFGDetailViewController.h */,
 				4471B7BE1F3C468F00137BDE /* ZCFGDetailViewController.m */,
+				44A091F01F412AD0004B2DA4 /* NewsDetailCell.h */,
+				44A091F11F412AD0004B2DA4 /* NewsDetailCell.m */,
+				44A091F21F412AD0004B2DA4 /* NewsDetailCell.xib */,
+				44A091F81F413C41004B2DA4 /* CommentCell.h */,
+				44A091F91F413C41004B2DA4 /* CommentCell.m */,
+				44A091FA1F413C41004B2DA4 /* CommentCell.xib */,
+				44D3542F1F42862300459B2F /* ReplyCell.h */,
+				44D354301F42862300459B2F /* ReplyCell.m */,
+				44D354311F42862300459B2F /* ReplyCell.xib */,
 			);
 			name = woyaokankanzhoubianshi;
 			sourceTree = "<group>";
@@ -1020,6 +1054,7 @@
 				7423D3E71F145D1200BA7D79 /* inforImagepressed.png in Resources */,
 				7423D3EF1F145FA400BA7D79 /* dynamic.png in Resources */,
 				745E76121F20B5FC00283B8C /* MJRefresh.bundle in Resources */,
+				44D354331F42862300459B2F /* ReplyCell.xib in Resources */,
 				7461ECB11F2582DC0054F403 /* bg.png in Resources */,
 				745E75B01F20A24D00283B8C /* 02.png in Resources */,
 				7461ECAF1F2581EF0054F403 /* RegisterViewController.xib in Resources */,
@@ -1029,9 +1064,11 @@
 				74BC58541F3055EF009F2F67 /* 6.png in Resources */,
 				44E325A01F385C12001E4C46 /* NewsCell.xib in Resources */,
 				446C4EC91F39945200E991FE /* .gitkeep in Resources */,
+				44A091F41F412AD0004B2DA4 /* NewsDetailCell.xib in Resources */,
 				7423D3E81F145D1200BA7D79 /* inforImagepressed@2x.png in Resources */,
 				7461ECB71F25CB100054F403 /* btnZC.PNG in Resources */,
 				74BC584B1F2ECE60009F2F67 /* LTPickerView.xib in Resources */,
+				44A091FC1F413C41004B2DA4 /* CommentCell.xib in Resources */,
 				7461ECB51F25A8440054F403 /* btnDL.PNG in Resources */,
 				7423D3931F13680800BA7D79 /* Main.storyboard in Resources */,
 			);
@@ -1094,6 +1131,7 @@
 			files = (
 				446C4ED31F39945200E991FE /* LPDProgressView.m in Sources */,
 				74040AE51F3315AE009B246E /* chulisuqiuViewController.m in Sources */,
+				44D354321F42862300459B2F /* ReplyCell.m in Sources */,
 				742B410D1F30A528000BF8E3 /* suqiuModel.h in Sources */,
 				745E764E1F20BA2700283B8C /* AFURLSessionManager.m in Sources */,
 				742B41011F30779B000BF8E3 /* suqiuCell.m in Sources */,
@@ -1144,6 +1182,7 @@
 				7448E1231F346B3D003BD0D3 /* suModel.m in Sources */,
 				745E76091F20B5FC00283B8C /* MJRefreshAutoGifFooter.m in Sources */,
 				742B410C1F30A367000BF8E3 /* chakansuqiuViewController.m in Sources */,
+				44A092021F41A37F004B2DA4 /* Comment.m in Sources */,
 				446C4ECC1F39945200E991FE /* LPDImageManager.m in Sources */,
 				44E6CB641F3AEC2E00BEB5ED /* ReplyViewController.m in Sources */,
 				446C4ED51F39945200E991FE /* LPDVideoPlayerController.m in Sources */,
@@ -1158,6 +1197,7 @@
 				74040AEC1F331806009B246E /* WDZSegmentedControl.m in Sources */,
 				745E763A1F20B60900283B8C /* NSObject+MJMember.m in Sources */,
 				745E760E1F20B5FC00283B8C /* MJRefreshBackStateFooter.m in Sources */,
+				44A091F71F412D99004B2DA4 /* SJAvatarBrowser.m in Sources */,
 				745E760F1F20B5FC00283B8C /* MJRefreshGifHeader.m in Sources */,
 				745E760C1F20B5FC00283B8C /* MJRefreshBackGifFooter.m in Sources */,
 				745E764A1F20BA2700283B8C /* AFNetworkReachabilityManager.m in Sources */,
@@ -1175,12 +1215,14 @@
 				745E76041F20B5FC00283B8C /* MJRefreshAutoFooter.m in Sources */,
 				44E3259F1F385C12001E4C46 /* NewsCell.m in Sources */,
 				745E76491F20BA2700283B8C /* AFHTTPSessionManager.m in Sources */,
+				44A091F31F412AD0004B2DA4 /* NewsDetailCell.m in Sources */,
 				7423D3CE1F136B4700BA7D79 /* PersonCenterViewController.m in Sources */,
 				446C4ED71F39945200E991FE /* UIImage+MyBundle.m in Sources */,
 				745E76361F20B60900283B8C /* MJType.m in Sources */,
 				446C4ECB1F39945200E991FE /* LPDAssetModel.m in Sources */,
 				745E76321F20B60900283B8C /* MJFoundation.m in Sources */,
 				745E76071F20B5FC00283B8C /* MJRefreshFooter.m in Sources */,
+				44A091FB1F413C41004B2DA4 /* CommentCell.m in Sources */,
 				745E76161F20B5FC00283B8C /* UIView+MJExtension.m in Sources */,
 				745E76141F20B5FC00283B8C /* UIScrollView+MJExtension.m in Sources */,
 				745E76081F20B5FC00283B8C /* MJRefreshHeader.m in Sources */,

@@ -17,7 +17,6 @@
 @implementation ZhouBianShiViewController
 int newsPageindex = 0;
 - (void)refreshData{
-    [self.dataSource removeAllObjects];
     newsPageindex = 0;
     [self loadMoreData];
     //    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",HOSTURL,@"GetNewsList"] parameters:@{@"Typeid":[NSString stringWithFormat:@"%ld",self.view.tag],@"pageindex":@"0",@"pagesize":NewsPagesize} success:^(id  _Nonnull json) {
@@ -32,10 +31,16 @@ int newsPageindex = 0;
 }
 - (void)loadMoreData{
     [super loadMoreData];
-    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"huoquTalk"] parameters:@{@"pagesize":NewsPagesize,@"pageindex":[NSString stringWithFormat:@"%d",newsPageindex+1]} success:^(id  _Nonnull json) {
+    NSDictionary *dic = [[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN];
+    NSString *str = [dic objectForKey:@"userid"];
+    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"huoquTalk"] parameters:@{@"pagesize":NewsPagesize,@"userid":str,@"pageindex":[NSString stringWithFormat:@"%d",newsPageindex+1]} success:^(id  _Nonnull json) {
         if ([json[@"result"] isEqualToString:@"success"]) {
             NSArray *dataArray = [ZCFGDetail objectArrayWithKeyValuesArray:json[@"Rows"]];
-            [self.dataSource insertObjects:dataArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(self.dataSource.count, dataArray.count)]];
+            if (newsPageindex == 0) {
+                self.dataSource = [dataArray mutableCopy];
+            } else {
+                [self.dataSource insertObjects:dataArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(self.dataSource.count, dataArray.count)]];
+            }
             [self.tableView reloadData];
             newsPageindex++;
         }
@@ -45,7 +50,7 @@ int newsPageindex = 0;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
-    } loadingMsg:@"正在加载ing" errorMsg:nil];
+    } loadingMsg:nil errorMsg:nil];
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -59,9 +64,6 @@ int newsPageindex = 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NewsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NewsCell class])];
-    if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([NewsCell class]) owner:nil options:nil] lastObject];
-    }
 //    NewsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NewsCell class]) forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.newsInfo = self.dataSource[indexPath.section];
@@ -69,6 +71,9 @@ int newsPageindex = 0;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self tableView:tableView didDeselectRowAtIndexPath:indexPath];
+    ZCFGDetailViewController *vc = [ZCFGDetailViewController new];
+    vc.newsInfo = self.dataSource[indexPath.section];
+    push(vc);
 //    push([ZCFGDetailViewController new]);
 }
 - (void)viewDidLoad {
@@ -76,10 +81,11 @@ int newsPageindex = 0;
     // Do any additional setup after loading the view.
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addMsg)];
-    [self refreshData];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([NewsCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([NewsCell class])];
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [self refreshData];
+}
 - (void)addMsg{
     [self.navigationController pushViewController:[AddMsgViewController new] animated:YES];
 }

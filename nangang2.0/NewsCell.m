@@ -5,7 +5,14 @@
 //  Created by wubin on 2017/7/25.
 //  Copyright © 2017年 clkeji. All rights reserved.
 //
-
+#define kHeadTMargin 15
+#define kHeadH 40
+#define kContentTMargin 10
+#define kContentH 50
+#define kImageLRMargin 30
+#define kImageMargin 15
+#define kImageHW (ScreenWidth-kImageLRMargin*2-kImageMargin*2)/3
+#define kTimeH 40
 #import "NewsCell.h"
 #import <UIButton+SSEdgeInsets.h>
 @interface NewsCell ()
@@ -73,15 +80,6 @@
     [self.comment setImagePositionWithType:SSImagePositionTypeLeft spacing:5];
     [self.zan setImagePositionWithType:SSImagePositionTypeLeft spacing:5];
 }
-//+ (instancetype)cellWithTableView:(UITableView *)tableView{
-//    static NSString *ID = @"NewsCell";
-//    NewsCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-////    if (!cell) {
-////        cell = [[[NSBundle mainBundle] loadNibNamed:@"NewsCell" owner:nil options:nil] lastObject];
-////    
-////    }
-//    return cell;
-//}
 - (void)setNewsInfo:(ZCFGDetail *)newsInfo{
     _newsInfo = newsInfo;
     self.title.text = newsInfo.Adder;
@@ -93,8 +91,5 @@
     }
     [self.zan setTitle:[NSString stringWithFormat:@"%ld",newsInfo.zanmbiancount]  forState:UIControlStateNormal];
     [self.comment setTitle:[NSString stringWithFormat:@"%ld",newsInfo.commentcount] forState:UIControlStateNormal];
-//    self.title.text = newsInfo.title;
-//    self.content.text = newsInfo.fbt;
-//    self.time.text = newsInfo.date;
 }
 @end

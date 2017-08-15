@@ -127,7 +127,7 @@
     }];
 }
 + (void)post:(NSString *)URLString images:(NSArray *)images parameters:(NSDictionary *)parameters success:(void (^)(id _Nonnull))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull))failure loadingMsg:(NSString *)loadMsg errorMsg:(NSString *)errorMsg{
-    WLog(@"%@--%@",URLString,parameters);
+    WLog(@"%@%@",URLString,parameters);
     //字符串处理
     NSString * string =[URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:URLString]];
     if (loadMsg != nil) {
@@ -136,7 +136,7 @@
     [[WDZAFNetworking shareManager] POST:string parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (int i = 0; i < images.count; i++) {
             NSData *data = UIImageJPEGRepresentation(images[i], 0.1);
-            [formData appendPartWithFileData:data name:[NSString stringWithFormat:@"%d",i] fileName:[NSString stringWithFormat:@"%d.jpg",i] mimeType:@"image/jpeg"];
+            [formData appendPartWithFileData:data name:@"" fileName:[NSString stringWithFormat:@"%d.jpg",i] mimeType:@"image/jpeg"];
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
@@ -144,7 +144,11 @@
         [SVProgressHUD dismiss];
         if (success) {
             NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-            success(str);
+            NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *error = nil;
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+            WLog(@"%@",dict);
+            success(dict);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         WLog(@"%@",error);
