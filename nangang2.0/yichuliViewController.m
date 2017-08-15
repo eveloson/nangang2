@@ -8,6 +8,8 @@
 
 #import "yichuliViewController.h"
 #import "chulisuqiumodel.h"
+#import "chulizhongModel.h"
+#import "yichuliView.h"
 
 @interface yichuliViewController ()<MBProgressHUDDelegate,UITableViewDelegate,UITableViewDataSource>
 {
@@ -192,7 +194,47 @@
     
 }
 -(void)btnchuliAction:(UIButton *)but{
+    chulisuqiumodel *model = [self.clientArray objectAtIndex:but.tag];
+    NSDictionary *dic1 = [[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN];
+    NSString *userID = [dic1 objectForKey:@"userid"];
     
+    [self.view showWarning:@""];
+    NSDictionary *param = @{@"Action":@"AskingHandleOrOkView",@"ID":model.ID};
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", @"text/json", @"text/javascript", @"application/json", nil];
+    [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,@"/AjaxService/OperateHandler.ashx"] parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [dic objectForKey:@"result"];
+        [self.view hideBusyHUD];
+        NSLog(@"%@",dic);
+        if ([result isEqualToString:@"success"])
+        {
+            chulizhongModel *model1 = [chulizhongModel objectWithKeyValues:[[dic objectForKey:@"Rows"] objectAtIndex:0]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                yichuliView *view = [[yichuliView alloc]init];
+                
+                view.model = model;
+                view.model1 = model1;
+                [self.navigationController pushViewController:view animated:YES];
+            });
+        }
+        else
+        {    NSString *error = [dic objectForKey:@"tips"];
+            [self.view showWarning1:error];
+            
+            
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self.view hideBusyHUD];
+        [self.view showWarning1:[NSString stringWithFormat:@"%@",error]];
+        
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

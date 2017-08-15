@@ -7,16 +7,32 @@
 //
 
 #import "ShouGuiJuViewController.h"
-
+#import "WDZSegmentedView.h"
 @interface ShouGuiJuViewController ()
+@property (nonatomic, strong) NSArray *dataArray;
 
 @end
 
 @implementation ShouGuiJuViewController
+- (NSArray *)dataArray{
+    if (!_dataArray) {
+        _dataArray = @[
+                       @[@"党员之家",@"干部监督"],
+                       @[@"DangyuanZJView",@"GanBuJDView"
+                         ]];
+    }
+    return _dataArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.title = @"我是党员守规矩";
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    WDZSegmentedView *segmentedView = [[WDZSegmentedView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64) SegmentHeight:44 DataArray:self.dataArray AndVC:self];
+    [self.view addSubview:segmentedView];
+
+
 }
 
 - (void)didReceiveMemoryWarning {
