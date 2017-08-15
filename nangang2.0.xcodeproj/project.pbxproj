@@ -34,6 +34,8 @@
 		44A092021F41A37F004B2DA4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A092011F41A37F004B2DA4 /* Comment.m */; };
 		44D354321F42862300459B2F /* ReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D354301F42862300459B2F /* ReplyCell.m */; };
 		44D354331F42862300459B2F /* ReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44D354311F42862300459B2F /* ReplyCell.xib */; };
+		44D354351F428A2100459B2F /* duanyuanzijiaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44D354341F428A2100459B2F /* duanyuanzijiaCell.xib */; };
+		44D354371F428A3900459B2F /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D354361F428A3900459B2F /* CommentCell.m */; };
 		44E325981F3856A2001E4C46 /* WDZAFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E325971F3856A2001E4C46 /* WDZAFNetworking.m */; };
 		44E3259B1F3856AD001E4C46 /* NodeFatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E3259A1F3856AD001E4C46 /* NodeFatherViewController.m */; };
 		44E3259F1F385C12001E4C46 /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E3259D1F385C12001E4C46 /* NewsCell.m */; };
@@ -232,6 +234,8 @@
 		44D3542F1F42862300459B2F /* ReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyCell.h; sourceTree = "<group>"; };
 		44D354301F42862300459B2F /* ReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyCell.m; sourceTree = "<group>"; };
 		44D354311F42862300459B2F /* ReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReplyCell.xib; sourceTree = "<group>"; };
+		44D354341F428A2100459B2F /* duanyuanzijiaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = duanyuanzijiaCell.xib; sourceTree = "<group>"; };
+		44D354361F428A3900459B2F /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		44E325961F3856A2001E4C46 /* WDZAFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDZAFNetworking.h; sourceTree = "<group>"; };
 		44E325971F3856A2001E4C46 /* WDZAFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDZAFNetworking.m; sourceTree = "<group>"; };
 		44E325991F3856AD001E4C46 /* NodeFatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeFatherViewController.h; sourceTree = "<group>"; };
@@ -758,6 +762,7 @@
 		745E75B81F20AE2C00283B8C /* woyaokankanzhoubianshi */ = {
 			isa = PBXGroup;
 			children = (
+				44D354361F428A3900459B2F /* CommentCell.m */,
 				44A092001F41A37F004B2DA4 /* Comment.h */,
 				44A092011F41A37F004B2DA4 /* Comment.m */,
 				44A091F51F412D99004B2DA4 /* SJAvatarBrowser.h */,
@@ -829,6 +834,7 @@
 		745E75BC1F20AE8900283B8C /* woshjdangyuanshouguiju */ = {
 			isa = PBXGroup;
 			children = (
+				44D354341F428A2100459B2F /* duanyuanzijiaCell.xib */,
 				745E75CD1F20B04100283B8C /* ShouGuiJuViewController.h */,
 				745E75CE1F20B04100283B8C /* ShouGuiJuViewController.m */,
 				74534B631F414F8E000AC5ED /* DangyuanZJView.h */,
@@ -1134,6 +1140,7 @@
 				745E76031F20B5FC00283B8C /* LICENSE in Resources */,
 				745E75B31F20A24D00283B8C /* 05.png in Resources */,
 				745E75B11F20A24D00283B8C /* 03.png in Resources */,
+				44D354351F428A2100459B2F /* duanyuanzijiaCell.xib in Resources */,
 				742B40FA1F306747000BF8E3 /* daohangtiao.png in Resources */,
 				7461ECB31F25A49D0054F403 /* xingming.png in Resources */,
 				7423D3F21F145FA400BA7D79 /* dynamicImagepressed@2x.png in Resources */,
@@ -1230,6 +1237,7 @@
 				446C4ECF1F39945200E991FE /* LPDPhotoArrangeCVlLayout.m in Sources */,
 				745E75CC1F20B02D00283B8C /* NaXieShiViewController.m in Sources */,
 				7423D3C31F136A0E00BA7D79 /* BaseNaviController.m in Sources */,
+				44D354371F428A3900459B2F /* CommentCell.m in Sources */,
 				745E75C31F20AFEC00283B8C /* ZhouBianShiViewController.m in Sources */,
 				7423D3D11F136B6B00BA7D79 /* IndexViewController.m in Sources */,
 				74534B531F41397D000AC5ED /* juwuModel.m in Sources */,
