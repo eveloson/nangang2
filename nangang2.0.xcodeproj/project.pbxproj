@@ -30,7 +30,6 @@
 		44A091F31F412AD0004B2DA4 /* NewsDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A091F11F412AD0004B2DA4 /* NewsDetailCell.m */; };
 		44A091F41F412AD0004B2DA4 /* NewsDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A091F21F412AD0004B2DA4 /* NewsDetailCell.xib */; };
 		44A091F71F412D99004B2DA4 /* SJAvatarBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A091F61F412D99004B2DA4 /* SJAvatarBrowser.m */; };
-		44A091FB1F413C41004B2DA4 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A091F91F413C41004B2DA4 /* CommentCell.m */; };
 		44A091FC1F413C41004B2DA4 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A091FA1F413C41004B2DA4 /* CommentCell.xib */; };
 		44A092021F41A37F004B2DA4 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A092011F41A37F004B2DA4 /* Comment.m */; };
 		44D354321F42862300459B2F /* ReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D354301F42862300459B2F /* ReplyCell.m */; };
@@ -207,7 +206,6 @@
 		44A091F51F412D99004B2DA4 /* SJAvatarBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJAvatarBrowser.h; sourceTree = "<group>"; };
 		44A091F61F412D99004B2DA4 /* SJAvatarBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJAvatarBrowser.m; sourceTree = "<group>"; };
 		44A091F81F413C41004B2DA4 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
-		44A091F91F413C41004B2DA4 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		44A091FA1F413C41004B2DA4 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		44A092001F41A37F004B2DA4 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		44A092011F41A37F004B2DA4 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
@@ -715,7 +713,6 @@
 				44A091F11F412AD0004B2DA4 /* NewsDetailCell.m */,
 				44A091F21F412AD0004B2DA4 /* NewsDetailCell.xib */,
 				44A091F81F413C41004B2DA4 /* CommentCell.h */,
-				44A091F91F413C41004B2DA4 /* CommentCell.m */,
 				44A091FA1F413C41004B2DA4 /* CommentCell.xib */,
 				44D3542F1F42862300459B2F /* ReplyCell.h */,
 				44D354301F42862300459B2F /* ReplyCell.m */,
@@ -1222,7 +1219,6 @@
 				446C4ECB1F39945200E991FE /* LPDAssetModel.m in Sources */,
 				745E76321F20B60900283B8C /* MJFoundation.m in Sources */,
 				745E76071F20B5FC00283B8C /* MJRefreshFooter.m in Sources */,
-				44A091FB1F413C41004B2DA4 /* CommentCell.m in Sources */,
 				745E76161F20B5FC00283B8C /* UIView+MJExtension.m in Sources */,
 				745E76141F20B5FC00283B8C /* UIScrollView+MJExtension.m in Sources */,
 				745E76081F20B5FC00283B8C /* MJRefreshHeader.m in Sources */,
