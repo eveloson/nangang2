@@ -1,14 +1,14 @@
 //
-//  chuliView.m
+//  yichuliView.m
 //  nangang2.0
 //
-//  Created by 周家新 on 17/8/4.
+//  Created by 周家新 on 17/8/11.
 //  Copyright © 2017年 Zhou. All rights reserved.
 //
 
-#import "chuliView.h"
+#import "yichuliView.h"
 
-@interface chuliView ()
+@interface yichuliView ()
 {
     UIScrollView *myScrollView;
     UILabel *label1;
@@ -22,15 +22,16 @@
     UITextView *textView;
     UIButton *btnLiuzhuan;
     UIButton *btnJiexiang;
+    
 }
+
 @end
 
-@implementation chuliView
+@implementation yichuliView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = @"处理诉求";
+    self.navigationItem.title = @"诉求详情";
     myScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 10 -54)];
     myScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     myScrollView.showsHorizontalScrollIndicator = NO;
@@ -73,23 +74,15 @@
     label7.text = @"处理意见:";
     [myScrollView addSubview:label7];
     
-    label8 = [[UILabel alloc]initWithFrame:CGRectMake(10, label7.frame.origin.y + label7.frame.size.height + 10, ScreenWidth - 20, 30)];
-    label8.backgroundColor = [UIColor whiteColor];
-    [myScrollView addSubview:label8];
-    textView = [[UITextView alloc]initWithFrame:CGRectMake(10, label8.frame.origin.y        + label8.frame.size.height + 10, ScreenWidth, 100)];
+  //  label8 = [[UILabel alloc]initWithFrame:CGRectMake(10, label7.frame.origin.y + label7.frame.size.height + 10, ScreenWidth - 20, 30)];
+ //   label8.backgroundColor = [UIColor whiteColor];
+ //   [myScrollView addSubview:label8];
+    textView = [[UITextView alloc]initWithFrame:CGRectMake(10, label7.frame.origin.y + label7.frame.size.height + 10, ScreenWidth, 100)];
     textView.backgroundColor = [UIColor whiteColor];
     [myScrollView addSubview:textView];
-    
-    btnLiuzhuan = [[UIButton alloc]initWithFrame:CGRectMake(50, textView.frame.origin.y + textView.frame.size.height + 15, (ScreenWidth - 150)/2.000, 30)];
-    btnLiuzhuan.backgroundColor = [UIColor greenColor];
-    [myScrollView addSubview:btnLiuzhuan];
-    
-    btnJiexiang = [[UIButton alloc]initWithFrame:CGRectMake(btnLiuzhuan.frame.origin.x + btnLiuzhuan.frame.size.width + 50, textView.frame.origin.y + textView.frame.size.height + 15, (ScreenWidth - 150)/2.000, 30)];
-    btnJiexiang.backgroundColor = [UIColor whiteColor];
-    [myScrollView addSubview:btnJiexiang];
-    myScrollView.bounces = NO;
-    myScrollView.contentSize = CGSizeMake(ScreenWidth,btnJiexiang.frame.origin.y + btnJiexiang.frame.size.height + 20);;
+
     [self GetAllOptionRequest];
+
 }
 -(void)GetAllOptionRequest{
     NSDictionary *dic1 = [[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN];
@@ -110,24 +103,55 @@
         NSLog(@"%@",dic);
         if ([result isEqualToString:@"success"])
         {
-            //            dispatch_async(dispatch_get_main_queue(), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if ([[dic objectForKey:@"Rows"] count]==0)
+                {
+                    label8.text = [NSString stringWithFormat:@"处理意见:(暂无)"];
+                }else{
+                    for(int i = 0; i < [[dic objectForKey:@"Rows"] count] ; i++)
+                    {
+                        
+                        NSDictionary *dic1 = [[dic objectForKey:@"Rows"] objectAtIndex:i];
+                        NSString *Name = [dic1 objectForKey:@"Name"];
+                        NSString *TreatOption = [dic1 objectForKey:@"TreatOption"];
+                        NSString *TreatTime = [dic1 objectForKey:@"TreatTime"];
+                        
+                        NSString *stsr = [NSString stringWithFormat:@"%@:%@\n%@",Name,TreatOption,TreatTime];NSString *str2 = [[NSString alloc]init];
+                        str2 = [NSString stringWithFormat:@"%@\n%@",str2,stsr];
+                        NSLog(@"%@",str2);
+                       // label8.text = [NSString stringWithFormat:@"处理意见:%@",str2];
+                        textView.text = [NSString stringWithFormat:@"处理意见:%@",str2];
+                        UIFont *font = [UIFont fontWithName:@"Arial" size:17];
+                        //设置一个行高上限
+                        CGSize size = CGSizeMake(ScreenWidth - 20,2000);
+                        //计算实际frame大小，并将label的frame变成实际大小
+                        CGSize labelsize = [textView.text sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+                        textView.frame = CGRectMake(textView.frame.origin.x, textView.frame.origin.y, ScreenWidth -20, labelsize.height + 20);
+                        textView.font = [UIFont systemFontOfSize:17];
+                        textView.editable = NO;
+                        
+                    }
+                    
+                }
+            });
+            
+            
+            
+            //            NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+            //            if (_btnzd.tag == 0) {
             //
-            //            label1.text = [NSString stringWithFormat:@"%@",[[[dic objectForKey:@"Rows"] objectAtIndex:0] objectForKey:@"CreateTime"]];
-            //            label2.text = [NSString stringWithFormat:@"反映人:%@",[[[dic objectForKey:@"Rows"] objectAtIndex:0] objectForKey:@"Name"]];
-            //            label3.text = [NSString stringWithFormat:@"%@",[[[dic objectForKey:@"Rows"] objectAtIndex:0] objectForKey:@"MobilePhoneNumber"]];
-            //            label4.text = [NSString stringWithFormat:@"家庭住址:%@  %@ %@",[[[dic objectForKey:@"Rows"] objectAtIndex:0] objectForKey:@"Quanters"],[[[dic objectForKey:@"Rows"] objectAtIndex:0] objectForKey:@"Floor"],[[[dic objectForKey:@"Rows"] objectAtIndex:0] objectForKey:@"Room"]];
-            //                 });
-            //            label5.text = [NSString stringWithFormat:@"%@",[[[dic objectForKey:@"Rows"] objectAtIndex:0] objectForKey:@"Reason"]];
-            UIFont *font = [UIFont fontWithName:@"Arial" size:16];
-            //设置一个行高上限
-            CGSize size = CGSizeMake(ScreenWidth - 20,2000);
-            //计算实际frame大小，并将label的frame变成实际大小
-            CGSize labelsize = [label5.text sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-            label5.frame = CGRectMake(10, label5.frame.origin.y , ScreenWidth - 20, labelsize.height + 10);
-            label6.frame = CGRectMake(10, label5.frame.origin.y + label5.frame.size.height + 10, ScreenWidth - 20, 30);
-            
-            
-            
+            //                [ud setObject:dic forKey:KEY_ACCESSTOKEN];
+            //                [ud setObject:dic forKey:KEY_TOKEN];
+            //                [ud synchronize];
+            //            }
+            //            else{
+            //                [ud setObject:dic forKey:KEY_TOKEN];
+            //            }
+            //            [self.view showWarning1:@"登录成功"];
+            //            MainTabBarViewController *main = [[MainTabBarViewController alloc]init];
+            //
+            //            [[UIApplication sharedApplication].delegate window].rootViewController = main;
         }
         else
         {    NSString *error = [dic objectForKey:@"tips"];
@@ -141,14 +165,20 @@
         [self.view showWarning1:[NSString stringWithFormat:@"%@",error]];
         
     }];
-    
 }
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

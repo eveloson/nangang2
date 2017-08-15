@@ -1,48 +1,44 @@
 //
-//  chulizhongViewController.m
+//  DangyuanZJView.m
 //  nangang2.0
 //
-//  Created by 周家新 on 17/8/3.
+//  Created by 周家新 on 17/8/14.
 //  Copyright © 2017年 Zhou. All rights reserved.
 //
 
-#import "chulizhongViewController.h"
-#import "chulisuqiumodel.h"
-#import "chulizhongModel.h"
-#import "chulizhongView.h"
-
-@interface chulizhongViewController ()<MBProgressHUDDelegate,UITableViewDelegate,UITableViewDataSource>
+#import "DangyuanZJView.h"
+#import "juwuModel.h"
+#import "juwuxiangqingView.h"
+#import "duanyuanzijiaCell.h"
+@interface DangyuanZJView ()<UITableViewDelegate,UITableViewDataSource>
 {
-    MBProgressHUD *HUD;
-    UITableView * myTableView;
+    UITableView *myTableView;
     int page;
     int countPage;//每页返回10条数据
 }
 @property(nonatomic,strong) NSMutableArray *clientArray;
 @end
 
-@implementation chulizhongViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-//    self.view.backgroundColor = [UIColor greenColor];
-    myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight -108) style:UITableViewStylePlain];
-    
-    myTableView.delegate = self;
-    myTableView.dataSource = self;
-    //    myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:myTableView];
-    page = 1;
-    countPage = 10;
-    [self setTableviewRefreash];
-
-}
+@implementation DangyuanZJView
 -(NSMutableArray *)clientArray{
     if (!_clientArray) {
         _clientArray = [[NSMutableArray alloc] init];
     }
     return _clientArray;
 }
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.title = @"党员之家";
+    myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0 , ScreenWidth, ScreenHeight- 64- 44) style:UITableViewStylePlain];
+    myTableView.delegate = self;
+    myTableView.dataSource = self;
+    [self.view addSubview:myTableView];
+    page = 1;
+    countPage = 10;
+    [self setTableviewRefreash];
+}
+#pragma mark -设置刷新
 -(void)setTableviewRefreash
 {
     
@@ -83,14 +79,15 @@
     [myTableView.mj_header beginRefreshing];
     
 }
+
 #pragma mark -设置刷新方法
 //下拉刷新
 -(void)loadNewData
 {
     page = 1;
     myTableView.mj_footer.hidden = YES;
-    [self.clientArray removeAllObjects];
-    [self AskingHandleRequest];
+   
+    [self GetMyQuanZi];
     
 }
 
@@ -98,33 +95,35 @@
 -(void)loadMoreData
 {
     page ++;
-    [self AskingHandleRequest];
+    [self GetMyQuanZi];
     
 }
-
--(void)AskingHandleRequest{
+-(void)GetMyQuanZi{
     [self.view showWarning:@""];
     NSDictionary *dic = [[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN];
     NSString *str = [dic objectForKey:@"userid"];
     
-    NSDictionary *param = @{@"Action":@"AskingHandleOrOk",@"Id":str,@"Page":[NSString stringWithFormat:@"%i",page]};
+    NSDictionary *param = @{@"Action":@"getNewsNoCList",@"CategoryName":@"党员之家",@"Page":[NSString stringWithFormat:@"%i",page]};
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", @"text/json", @"text/javascript", @"application/json", nil];
-    [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,@"/AjaxService/OperateHandler.ashx"] parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,@"/AjaxService/NewsHandler.ashx"] parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSString *result = [dic objectForKey:@"result"];
-        NSLog(@"%@",dic);
+//        NSLog(@"%@",dic);
         [self.view hideBusyHUD];
         if ([result isEqualToString:@"success"])
         {
             // 成功了
+            if (page == 1) {
+                 [self.clientArray removeAllObjects];
+            }
             NSMutableArray *arr = [dic objectForKey:@"Rows"];
             for (int i = 0; i < arr.count; i ++) {
-                chulisuqiumodel *model = [chulisuqiumodel objectWithKeyValues:[arr objectAtIndex:i]];
+                juwuModel *model = [juwuModel objectWithKeyValues:[arr objectAtIndex:i]];
                 [self.clientArray addObject:model];
             }
             [myTableView.mj_header endRefreshing];
@@ -160,82 +159,39 @@
         myTableView.mj_footer.hidden = YES;
         [self.view showWarning1:[NSString stringWithFormat:@"%@",error]];
     }];
-    
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.clientArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    static NSString *resueId = @"resueId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:resueId];
-    UILabel *label;
-    UIButton *btn;
+    duanyuanzijiaCell *cell = [tableView dequeueReusableCellWithIdentifier:@"duanyuanzijiaCell"];
     if (!cell)
     {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:resueId];
-        label = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, ScreenWidth - 25 - 70, 34)];
-        [cell addSubview:label];
-        btn = [[UIButton alloc]initWithFrame:CGRectMake(label.frame.origin.x + label.frame.size.width + 5, 5, 70, 34)];
-        [cell addSubview:btn];
+        cell = [[duanyuanzijiaCell alloc]init];
+        NSArray *array = [[NSBundle mainBundle]loadNibNamed:@"duanyuanzijiaCell" owner:nil options:nil];
+        cell = [array lastObject];
     }
-    chulisuqiumodel *model = [self.clientArray objectAtIndex:indexPath.row];
-    label.text = [NSString stringWithFormat:@"%@",model.Reason];
-    [btn setBackgroundImage:[UIImage imageNamed:@"24.PNG"] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageNamed:@"25.PNG"] forState:UIControlStateHighlighted];
-    [btn setTitle:@"查看" forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(btnchuliAction:) forControlEvents:UIControlEventTouchUpInside];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+
+    juwuModel *model = [self.clientArray objectAtIndex:indexPath.row];
+    NSLog(@"%@ %li",model.rn  ,(long)indexPath.row);
+    cell.label.text = [NSString stringWithFormat:@"%@",model.Title];
+    cell.label1.text = [NSString stringWithFormat:@"%@",model.FBTime];
+       cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
     
 }
--(void)btnchuliAction:(UIButton *)but{
-    chulisuqiumodel *model = [self.clientArray objectAtIndex:but.tag];
-    NSDictionary *dic1 = [[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN];
-    NSString *userID = [dic1 objectForKey:@"userid"];
-    
-    [self.view showWarning:@""];
-    NSDictionary *param = @{@"Action":@"AskingHandleOrOkView",@"ID":model.ID};
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", @"text/json", @"text/javascript", @"application/json", nil];
-    [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,@"/AjaxService/OperateHandler.ashx"] parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
-        NSString *result = [dic objectForKey:@"result"];
-        [self.view hideBusyHUD];
-        NSLog(@"%@",dic);
-        if ([result isEqualToString:@"success"])
-        {
-            chulizhongModel *model1 = [chulizhongModel objectWithKeyValues:[[dic objectForKey:@"Rows"] objectAtIndex:0]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                chulizhongView *view = [[chulizhongView alloc]init];
-                
-                view.model = model;
-                view.model1 = model1;
-                [self.navigationController pushViewController:view animated:YES];
-            });
-        }
-        else
-        {    NSString *error = [dic objectForKey:@"tips"];
-            [self.view showWarning1:error];
-            
-            
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self.view hideBusyHUD];
-        [self.view showWarning1:[NSString stringWithFormat:@"%@",error]];
-        
-    }];
-    
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    juwuxiangqingView *view = [[juwuxiangqingView alloc]init];
+    juwuModel *model = [self.clientArray objectAtIndex:indexPath.row];
+    view.model = model;
+    [self.navigationController pushViewController:view animated:YES];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
