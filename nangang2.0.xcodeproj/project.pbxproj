@@ -762,7 +762,6 @@
 		745E75B81F20AE2C00283B8C /* woyaokankanzhoubianshi */ = {
 			isa = PBXGroup;
 			children = (
-				44D354361F428A3900459B2F /* CommentCell.m */,
 				44A092001F41A37F004B2DA4 /* Comment.h */,
 				44A092011F41A37F004B2DA4 /* Comment.m */,
 				44A091F51F412D99004B2DA4 /* SJAvatarBrowser.h */,
@@ -784,6 +783,7 @@
 				44A091F11F412AD0004B2DA4 /* NewsDetailCell.m */,
 				44A091F21F412AD0004B2DA4 /* NewsDetailCell.xib */,
 				44A091F81F413C41004B2DA4 /* CommentCell.h */,
+				44D354361F428A3900459B2F /* CommentCell.m */,
 				44A091FA1F413C41004B2DA4 /* CommentCell.xib */,
 				44D3542F1F42862300459B2F /* ReplyCell.h */,
 				44D354301F42862300459B2F /* ReplyCell.m */,

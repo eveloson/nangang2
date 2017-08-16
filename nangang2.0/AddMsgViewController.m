@@ -8,6 +8,7 @@
 #define kFooterH 250
 #import "AddMsgViewController.h"
 #import "LPDQuoteImagesView.h"
+#import "ZhouBianShiViewController.h"
 @interface AddMsgViewController ()<LPDQuoteImagesViewDelegate>
 @property (nonatomic, weak) LPDQuoteImagesView *imagesView;
 @end
@@ -73,8 +74,9 @@
     NSDictionary *dic = [[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN];
     NSString *str = [dic objectForKey:@"userid"];
     para[@"AddId"] = str;
-    [WDZAFNetworking post:[NSString stringWithFormat:@"%@%@",ServerName,@"addTalk"] images:self.imagesView.selectedPhotos parameters:para success:^(id  _Nonnull json) {
+    [WDZAFNetworking post:[NSString stringWithFormat:@"%@%@",ServerName,@"tb_talkHandler.ashx?Action=addTalk"] images:self.imagesView.selectedPhotos parameters:para success:^(id  _Nonnull json) {
         if ([json[@"result"] isEqualToString:@"success"]) {
+            [self.vc refreshData];
             [self.navigationController popViewControllerAnimated:YES];
         } else {
             

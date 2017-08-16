@@ -31,16 +31,16 @@
 #import "MBProgressHUD.h"
 #define HDT_MBPRGRESSBAR_NOTCANCEL 1001 //MBprogressbar 点击不能取消 必须等到调用【HUD hide】
 #define HOSTURL @"http://222.184.127.50:10070"
-#define ServerName @"http://192.168.2.201:50485/AjaxService/tb_talkHandler.ashx?Action="
+#define ServerName @"http://192.168.2.201:50485/AjaxService/"
 #define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 
 #define RGB(r, g, b) RGBA(r, g, b, 1.0f)
-#define ThemeColor RGB(71,144,255)
+#define ThemeColor RGB(79,192,233)
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #define KEY_ACCESSTOKEN @"access_token"
-
+#define UserID [[[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN] objectForKey:@"userid"]
 #define KEY_TOKEN @"token"
 #define GETTOKEN  [[NSUserDefaults standardUserDefaults] objectForKey:KEY_TOKEN]
 #define GETACCESSTOKEN  [[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCESSTOKEN]

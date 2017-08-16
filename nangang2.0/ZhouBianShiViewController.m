@@ -33,7 +33,7 @@ int newsPageindex = 0;
     [super loadMoreData];
     NSDictionary *dic = [[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN];
     NSString *str = [dic objectForKey:@"userid"];
-    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"huoquTalk"] parameters:@{@"pagesize":NewsPagesize,@"userid":str,@"pageindex":[NSString stringWithFormat:@"%d",newsPageindex+1]} success:^(id  _Nonnull json) {
+    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"tb_talkHandler.ashx?Action=huoquTalk"] parameters:@{@"pagesize":NewsPagesize,@"userid":str,@"pageindex":[NSString stringWithFormat:@"%d",newsPageindex+1]} success:^(id  _Nonnull json) {
         if ([json[@"result"] isEqualToString:@"success"]) {
             NSArray *dataArray = [ZCFGDetail objectArrayWithKeyValuesArray:json[@"Rows"]];
             if (newsPageindex == 0) {
@@ -82,12 +82,12 @@ int newsPageindex = 0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addMsg)];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([NewsCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([NewsCell class])];
-}
-- (void)viewWillAppear:(BOOL)animated{
     [self refreshData];
 }
 - (void)addMsg{
-    [self.navigationController pushViewController:[AddMsgViewController new] animated:YES];
+    AddMsgViewController *vc = [AddMsgViewController new];
+    vc.vc = self;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

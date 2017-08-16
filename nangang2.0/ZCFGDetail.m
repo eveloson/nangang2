@@ -8,7 +8,5 @@
 
 #import "ZCFGDetail.h"
 @implementation ZCFGDetail
-+ (NSDictionary *)mj_replacedKeyFromPropertyName{
-    return @{@"ID":@"Id"};
-}
+
 @end

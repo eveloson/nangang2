@@ -69,7 +69,7 @@
     }];
 }
 + (void)get:(NSString *)URLString parameters:(NSDictionary *)parameters success:(void (^)(id _Nonnull))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull))failure loadingMsg:(NSString *)loadMsg errorMsg:(NSString *)errorMsg{
-    WLog(@"%@--%@",URLString,parameters);
+    WLog(@"%@%@",URLString,parameters);
     //字符串处理
     NSString * string =[URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:URLString]];
     if (loadMsg != nil) {
@@ -83,11 +83,12 @@
             NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
             NSError *error = nil;
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+            WLog(@"%@",error);
             WLog(@"%@",dict);
             success(dict);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError *_Nonnull error) {
-        WLog(@"%@",error);
+        WLog(@"%@",error.debugDescription);
         if (errorMsg != nil) {
             [SVProgressHUD showErrorWithStatus:errorMsg];
         }

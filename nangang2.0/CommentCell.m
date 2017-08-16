@@ -10,6 +10,8 @@
 #import "CommentCell.h"
 
 @interface CommentCell ()<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *content;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @end
@@ -19,8 +21,29 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    [self.name makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(5);
+        make.left.equalTo(10);
+        make.right.equalTo(-10);
+        make.height.equalTo(17);
+    }];
+    self.content.preferredMaxLayoutWidth = ScreenWidth - 2*10;
+    [self.content setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.content makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.name);
+        make.top.equalTo(self.name.bottom).offset(8);
+    }];
+    [self.tableView makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.name);
+        make.top.equalTo(self.content.bottom).offset(5);
+        make.bottom.offset(-10);
+    }];
 }
-
+- (void)setComment:(Comment *)comment{
+    _comment = comment;
+    self.name.text = comment.UserName;
+    self.content.text = [NSString stringWithFormat:@"%@",comment.CommentMsg];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }

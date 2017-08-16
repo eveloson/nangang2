@@ -23,9 +23,10 @@
     [self setupComments];
 }
 - (void)setupComments{
-    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"getCommentlist"] parameters:@{@"talkid":self.newsInfo.ID} success:^(id  _Nonnull json) {
+    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"TabCommentHandler.ashx?Action=getCommentlist"] parameters:@{@"talkid":self.newsInfo.Id} success:^(id  _Nonnull json) {
         if ([json[@"result"] isEqualToString:@"success"]) {
-            self.dataSource = [[Comment objectArrayWithKeyValuesArray:json[@"Rows"]] mutableCopy];;
+            self.dataSource = [[Comment objectArrayWithKeyValuesArray:json[@"Rows"]] mutableCopy];
+            [self.tableView reloadData];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -44,17 +45,28 @@
     [self setupFooter];
 }
 - (void)setupFooter{
-    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight-60, ScreenWidth, 60)];
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight-50, ScreenWidth, 50)];
     footer.backgroundColor = ThemeColor;
     self.footer = footer;
     [[UIApplication sharedApplication].delegate.window addSubview:footer];
     
     UIButton *zan = [UIButton new];
-    [zan setImage:[UIImage imageNamed:@"点赞"] forState:UIControlStateNormal];
+    self.zan = zan;
+    NSString *zanImageName = nil;
+    if (self.newsInfo.flag == 0) {
+        zanImageName = @"赞";
+    } else {
+        zanImageName = @"赞1";
+    }
+    [zan setImage:[UIImage imageNamed:zanImageName] forState:UIControlStateNormal];
     [zan.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [zan addTarget:self action:@selector(zanClick) forControlEvents:UIControlEventTouchDown];
     UIButton *comment = [UIButton new];
-    [comment setImage:[UIImage imageNamed:@"回复"] forState:UIControlStateNormal];
+    self.comment = comment;
+    [comment setImage:[UIImage imageNamed:@"回复2"] forState:UIControlStateNormal];
+    [comment setImage:[UIImage imageNamed:@"回复"] forState:UIControlStateHighlighted];
     [comment.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [comment addTarget:self action:@selector(commentClick) forControlEvents:UIControlEventTouchDown];
     [footer addSubview:comment];
     [footer addSubview:zan];
     [self.zan makeConstraints:^(MASConstraintMaker *make) {
@@ -65,12 +77,36 @@
     }];
     [self.comment makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(footer);
-        make.centerX.equalTo(footer).multipliedBy(0.75);
+        make.centerX.equalTo(footer).multipliedBy(1.5);
         make.height.equalTo(30);
         make.width.equalTo(60);
     }];
     [self.comment setImagePositionWithType:SSImagePositionTypeLeft spacing:5];
     [self.zan setImagePositionWithType:SSImagePositionTypeLeft spacing:5];
+}
+- (void)zanClick{
+    NSString *method = nil;
+    if (self.newsInfo.flag == 0) {
+        method = @"addZan";
+    } else {
+        method = @"deleteZan";
+    }
+    [WDZAFNetworking get:[NSString stringWithFormat:@"%@TabZambiaHandler.ashx?Action=%@",ServerName,method] parameters:@{@"ParentId":self.newsInfo.Id,@"UserId":UserID} success:^(id  _Nonnull json) {
+        if ([json[@"result"] isEqualToString:@"success"]) {
+            if (self.newsInfo.flag == 0) {
+                self.newsInfo.flag = 1;
+                [self.zan setImage:[UIImage imageNamed:@"赞1"] forState:UIControlStateNormal];
+            } else {
+                self.newsInfo.flag = 0;
+                [self.zan setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    } loadingMsg:nil errorMsg:nil];
+}
+- (void)commentClick{
+    
 }
 - (void)viewWillAppear:(BOOL)animated{
     self.footer.hidden = NO;
@@ -104,6 +140,7 @@
     } else {
         CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CommentCell class])];
         cell.comment = self.dataSource[indexPath.row];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 }
