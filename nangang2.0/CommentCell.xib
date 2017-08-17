@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="et8-wA-4pL">
-                        <rect key="frame" x="0.0" y="135" width="416" height="96"/>
+                        <rect key="frame" x="0.0" y="169" width="416" height="62"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -41,14 +41,37 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpe-Tx-sgq">
+                        <rect key="frame" x="272" y="25" width="51" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="回复" image="回复">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="replyClick:" destination="KGk-i7-Jjw" eventType="touchDown" id="mfz-Jq-WaX"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDP-3M-L98">
+                        <rect key="frame" x="8" y="122" width="416" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="commentBtn" destination="tpe-Tx-sgq" id="VH2-DM-cLj"/>
                 <outlet property="content" destination="EgW-hI-b29" id="Xay-al-bLY"/>
                 <outlet property="name" destination="zJX-JH-QtV" id="pyi-XN-fY4"/>
                 <outlet property="tableView" destination="et8-wA-4pL" id="4CC-qT-wjv"/>
+                <outlet property="time" destination="cDP-3M-L98" id="D6g-9S-GbS"/>
             </connections>
             <point key="canvasLocation" x="33" y="76"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="回复" width="14" height="14"/>
+    </resources>
 </document>

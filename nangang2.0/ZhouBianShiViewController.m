@@ -35,7 +35,8 @@ int newsPageindex = 0;
     NSString *str = [dic objectForKey:@"userid"];
     [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"tb_talkHandler.ashx?Action=huoquTalk"] parameters:@{@"pagesize":NewsPagesize,@"userid":str,@"pageindex":[NSString stringWithFormat:@"%d",newsPageindex+1]} success:^(id  _Nonnull json) {
         if ([json[@"result"] isEqualToString:@"success"]) {
-            NSArray *dataArray = [ZCFGDetail objectArrayWithKeyValuesArray:json[@"Rows"]];
+            NSArray *data = json[@"data"];
+            NSArray *dataArray = [ZCFGDetail objectArrayWithKeyValuesArray:data];
             if (newsPageindex == 0) {
                 self.dataSource = [dataArray mutableCopy];
             } else {

@@ -10,4 +10,10 @@
 
 @implementation Comment
 
+- (NSDictionary *)objectClassInArray{
+    return @{
+             @"Commens":[self class],
+             };
+}
+
 @end

@@ -8,13 +8,30 @@
 
 #import "ReplyCell.h"
 
+@interface ReplyCell ()
+@property (weak, nonatomic) IBOutlet UILabel *content;
+
+@end
+
 @implementation ReplyCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.backgroundColor = RGB(244, 244, 244);
+    self.content.preferredMaxLayoutWidth = ScreenWidth - 2*10;
+    [self.content setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.content makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(0);
+        make.bottom.equalTo(0);
+        make.left.equalTo(15);
+        make.right.equalTo(-15);
+    }];
 }
 
+- (void)setComment:(Comment *)comment{
+    _comment = comment;
+    self.content.text = [NSString stringWithFormat:@"%@:%@",comment.UserName,comment.CommentMsg];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

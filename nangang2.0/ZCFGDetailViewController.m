@@ -10,36 +10,80 @@
 #import "NewsDetailCell.h"
 #import "CommentCell.h"
 #import <UIButton+SSEdgeInsets.h>
+#import "AddCommentViewController.h"
 @interface ZCFGDetailViewController ()
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, weak) UIView *footer;
-@property (weak, nonatomic) UIButton *zan;
-@property (weak, nonatomic) UIButton *comment;
+@property (strong, nonatomic) UIButton *zan;
+@property (strong, nonatomic) UIButton *comment;
 @end
 
 @implementation ZCFGDetailViewController
-- (void)setNewsInfo:(ZCFGDetail *)newsInfo{
-    _newsInfo = newsInfo;
-    [self setupComments];
-}
-- (void)setupComments{
-    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"TabCommentHandler.ashx?Action=getCommentlist"] parameters:@{@"talkid":self.newsInfo.Id} success:^(id  _Nonnull json) {
-        if ([json[@"result"] isEqualToString:@"success"]) {
-            self.dataSource = [[Comment objectArrayWithKeyValuesArray:json[@"Rows"]] mutableCopy];
-            [self.tableView reloadData];
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    } loadingMsg:nil errorMsg:nil];
-}
+@synthesize dataSource = _dataSource;
 - (NSMutableArray *)dataSource{
     if (!_dataSource) {
         _dataSource = [NSMutableArray new];
     }
     return _dataSource;
 }
+- (void)setDataSource:(NSMutableArray *)dataSource{
+    _dataSource = dataSource;
+    NSString *commentStr = nil;
+    if (dataSource.count == 0) {
+        commentStr = @"评论";
+    } else {
+        commentStr = [NSString stringWithFormat:@"%ld",self.newsInfo.commentcount];
+    }
+    [self.comment setTitle:commentStr forState:UIControlStateNormal];
+}
+- (void)setNewsInfo:(ZCFGDetail *)newsInfo{
+    _newsInfo = newsInfo;
+    
+    NSString *zanStr = nil;
+    if (self.newsInfo.zanmbiancount == 0) {
+        zanStr = @"赞";
+    } else {
+        zanStr = [NSString stringWithFormat:@"%ld",self.newsInfo.zanmbiancount];
+    }
+    [self.zan setTitle:zanStr  forState:UIControlStateNormal];
+    NSString *commentStr = nil;
+    if (self.newsInfo.zanmbiancount == 0) {
+        commentStr = @"评论";
+    } else {
+        commentStr = [NSString stringWithFormat:@"%ld",self.newsInfo.commentcount];
+    }
+    [self.comment setTitle:commentStr forState:UIControlStateNormal];
+    
+    [self setupComments];
+   
+}
+- (UIButton *)zan{
+    if (!_zan) {
+        _zan = [UIButton new];
+    }
+    return _zan;
+}
+- (UIButton *)comment{
+    if (!_comment) {
+        _comment = [UIButton new];
+    }
+    return _comment;
+}
+- (void)setupComments{
+    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"TabCommentHandler.ashx?Action=getCommentlist"] parameters:@{@"talkid":self.newsInfo.Id} success:^(id  _Nonnull json) {
+        if ([json[@"result"] isEqualToString:@"success"]) {
+            NSArray *data = json[@"data"];
+            self.dataSource = [[Comment objectArrayWithKeyValuesArray:data                                                                      ] mutableCopy];
+            [self.tableView reloadData];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    } loadingMsg:nil errorMsg:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.bounces = NO;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([NewsDetailCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([NewsDetailCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CommentCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CommentCell class])];
     [self setupFooter];
@@ -50,25 +94,23 @@
     self.footer = footer;
     [[UIApplication sharedApplication].delegate.window addSubview:footer];
     
-    UIButton *zan = [UIButton new];
-    self.zan = zan;
     NSString *zanImageName = nil;
     if (self.newsInfo.flag == 0) {
         zanImageName = @"赞";
     } else {
         zanImageName = @"赞1";
     }
-    [zan setImage:[UIImage imageNamed:zanImageName] forState:UIControlStateNormal];
-    [zan.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [zan addTarget:self action:@selector(zanClick) forControlEvents:UIControlEventTouchDown];
-    UIButton *comment = [UIButton new];
-    self.comment = comment;
-    [comment setImage:[UIImage imageNamed:@"回复2"] forState:UIControlStateNormal];
-    [comment setImage:[UIImage imageNamed:@"回复"] forState:UIControlStateHighlighted];
-    [comment.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [comment addTarget:self action:@selector(commentClick) forControlEvents:UIControlEventTouchDown];
-    [footer addSubview:comment];
-    [footer addSubview:zan];
+    [self.zan setImage:[UIImage imageNamed:zanImageName] forState:UIControlStateNormal];
+    [self.zan.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [self.zan addTarget:self action:@selector(zanClick) forControlEvents:UIControlEventTouchDown];
+    
+    
+    [self.comment setImage:[UIImage imageNamed:@"回复2"] forState:UIControlStateNormal];
+    [self.comment setImage:[UIImage imageNamed:@"回复"] forState:UIControlStateHighlighted];
+    [self.comment.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [self.comment addTarget:self action:@selector(commentClick) forControlEvents:UIControlEventTouchDown];
+    [footer addSubview:self.comment];
+    [footer addSubview:self.zan];
     [self.zan makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(footer);
         make.centerX.equalTo(footer).multipliedBy(0.5);
@@ -91,22 +133,28 @@
     } else {
         method = @"deleteZan";
     }
-    [WDZAFNetworking get:[NSString stringWithFormat:@"%@TabZambiaHandler.ashx?Action=%@",ServerName,method] parameters:@{@"ParentId":self.newsInfo.Id,@"UserId":UserID} success:^(id  _Nonnull json) {
+    [WDZAFNetworking get:[NSString stringWithFormat:@"%@TabZambiaHandler.ashx?Action=%@",ServerName,method] parameters:@{@"ParentId":self.newsInfo.Id,@"UserId":kUserID} success:^(id  _Nonnull json) {
         if ([json[@"result"] isEqualToString:@"success"]) {
             if (self.newsInfo.flag == 0) {
                 self.newsInfo.flag = 1;
+                self.newsInfo.zanmbiancount++;
                 [self.zan setImage:[UIImage imageNamed:@"赞1"] forState:UIControlStateNormal];
             } else {
+                self.newsInfo.zanmbiancount--;
                 self.newsInfo.flag = 0;
                 [self.zan setImage:[UIImage imageNamed:@"赞"] forState:UIControlStateNormal];
             }
+            [self.zan setTitle:[NSString stringWithFormat:@"%ld",self.newsInfo.zanmbiancount] forState:UIControlStateNormal];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     } loadingMsg:nil errorMsg:nil];
 }
 - (void)commentClick{
-    
+    AddCommentViewController *vc = [AddCommentViewController new];
+    vc.vc = self;
+    vc.newsInfo = self.newsInfo;
+    push(vc);
 }
 - (void)viewWillAppear:(BOOL)animated{
     self.footer.hidden = NO;
@@ -141,6 +189,7 @@
         CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CommentCell class])];
         cell.comment = self.dataSource[indexPath.row];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.vc = self;
         return cell;
     }
 }

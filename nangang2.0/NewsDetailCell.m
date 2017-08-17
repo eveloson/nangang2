@@ -30,6 +30,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.title.textColor = RGB(87, 107, 149);
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     [self.head makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(15);

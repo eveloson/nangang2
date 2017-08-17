@@ -40,7 +40,8 @@
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #define KEY_ACCESSTOKEN @"access_token"
-#define UserID [[[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN] objectForKey:@"userid"]
+#define kUserID [[[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN] objectForKey:@"userid"]
+#define kUserName [[[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN]objectForKey:@"Name"];
 #define KEY_TOKEN @"token"
 #define GETTOKEN  [[NSUserDefaults standardUserDefaults] objectForKey:KEY_TOKEN]
 #define GETACCESSTOKEN  [[NSUserDefaults standardUserDefaults] objectForKey:KEY_ACCESSTOKEN]
