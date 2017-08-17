@@ -19,7 +19,7 @@
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         manager.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json",@"text/json",@"text/JavaScript",@"text/html",@"text/plain",@"text/xml",nil];
         [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        manager.requestSerializer.timeoutInterval = 15.f;
+        manager.requestSerializer.timeoutInterval = 60.f;
         [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
         

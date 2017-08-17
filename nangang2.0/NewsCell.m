@@ -55,13 +55,13 @@
         [self.imageArray[i] makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.content.bottom).offset(kContentTMargin);
             make.left.equalTo(kImageLRMargin + i * (kImageHW+kImageMargin));
-            make.height.width.equalTo(kImageHW);
+            make.height.width.equalTo(0);
         }];
     }
     [self.time makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.content);
-        make.top.equalTo([self.imageArray[0] mas_bottom]);
-        make.width.equalTo(120);
+        make.top.equalTo([self.imageArray[0] mas_bottom]).offset(5);
+        make.width.equalTo(150);
 //        make.height.equalTo(kTimeH);
         make.bottom.equalTo(-10);
     }];
@@ -87,7 +87,18 @@
     self.time.text = newsInfo.fbTime;
     for (int i=0; i<self.imageArray.count; i++) {
         UIImageView *image = self.imageArray[i];
-        [image sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502448586406&di=5a716ca57a945638b116e4510ca7f5cf&imgtype=0&src=http%3A%2F%2Fimg002.21cnimg.com%2Fphotos%2Fshe_0%2F20140717%2Fc100-0-0-477-445_r0%2F61FF69160D0AB0DB7E837160788B13D4.jpeg"]];
+        if (i<newsInfo.ImgUrl.count) {
+            NSString *url = [NSString stringWithFormat:@"%@%@",ServerHost,newsInfo.ImgUrl[i]];
+            url = [url stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
+            [image sd_setImageWithURL:[NSURL URLWithString:url]];
+            [image updateConstraints:^(MASConstraintMaker *make) {
+                make.height.width.equalTo(kImageHW);
+            }];
+        } else {
+            [image updateConstraints:^(MASConstraintMaker *make) {
+                make.height.width.equalTo(0);
+            }];
+        }
     }
     [self.zan setTitle:[NSString stringWithFormat:@"%ld",newsInfo.zanmbiancount]  forState:UIControlStateNormal];
     [self.comment setTitle:[NSString stringWithFormat:@"%ld",newsInfo.commentcount] forState:UIControlStateNormal];

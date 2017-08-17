@@ -21,8 +21,8 @@
     self.content.preferredMaxLayoutWidth = ScreenWidth - 2*10;
     [self.content setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     [self.content makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(0);
-        make.bottom.equalTo(0);
+        make.top.equalTo(5);
+        make.bottom.equalTo(-5);
         make.left.equalTo(15);
         make.right.equalTo(-15);
     }];

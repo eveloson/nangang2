@@ -71,15 +71,14 @@
     }
     [self.tableView endEditing:YES];
     NSMutableDictionary *para = [[self httpParameters] mutableCopy];
-    NSDictionary *dic = [[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN];
-    NSString *str = [dic objectForKey:@"userid"];
-    para[@"AddId"] = str;
+    para[@"AddId"] = kUserID;
+    para[@"Adder"] = kUserName;
     [WDZAFNetworking post:[NSString stringWithFormat:@"%@%@",ServerName,@"tb_talkHandler.ashx?Action=addTalk"] images:self.imagesView.selectedPhotos parameters:para success:^(id  _Nonnull json) {
         if ([json[@"result"] isEqualToString:@"success"]) {
             [self.vc refreshData];
             [self.navigationController popViewControllerAnimated:YES];
         } else {
-            
+            [SVProgressHUD showErrorWithStatus:@"发送失败，请重试！"];
         }
         
     } failure:nil loadingMsg:@"正在上传ing" errorMsg:@"网络连接错误，请重试"];

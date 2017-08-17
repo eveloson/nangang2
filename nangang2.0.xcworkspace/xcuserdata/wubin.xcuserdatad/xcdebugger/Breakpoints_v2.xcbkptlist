@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "nangang2.0/ZhouBianShiViewController.m"
-            timestampString = "524633242.201282"
+            filePath = "nangang2.0/NewsCell.m"
+            timestampString = "524647104.557585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-loadMoreData"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-setNewsInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

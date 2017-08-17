@@ -167,7 +167,20 @@
 }
 
 #pragma mark - Table view data source
-
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if (section == 1) {
+        return @"评论";
+    } else {
+        return @"";
+    }
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 1) {
+        return 30;
+    } else{
+        return 0.0001;
+    }
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
