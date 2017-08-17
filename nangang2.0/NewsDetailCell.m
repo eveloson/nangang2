@@ -116,6 +116,11 @@
         } else {
             [image updateConstraints:^(MASConstraintMaker *make) {
                 make.height.width.equalTo(0);
+                if (i==0) {
+                    make.top.equalTo(self.content.bottom);
+                } else {
+                    make.top.equalTo([self.imageArray[i-1] mas_bottom]);
+                }
             }];
         }
     }

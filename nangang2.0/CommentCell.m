@@ -10,6 +10,7 @@
 #import "CommentCell.h"
 #import "ZCFGDetailViewController.h"
 #import "AddReplyViewController.h"
+#import <UIButton+SSEdgeInsets.h>
 @interface CommentCell ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 @property (weak, nonatomic) IBOutlet UILabel *name;
@@ -33,10 +34,11 @@
     }];
     [self.commentBtn makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(-10);
-        make.width.equalTo(60);
-        make.height.equalTo(20);
+        make.width.equalTo(100);
+        make.height.equalTo(30);
         make.centerY.equalTo(self.name);
     }];
+    [self.commentBtn setImagePositionWithType:SSImagePositionTypeLeft spacing:5];
     self.content.preferredMaxLayoutWidth = ScreenWidth - 2*10;
     [self.content setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     [self.content makeConstraints:^(MASConstraintMaker *make) {

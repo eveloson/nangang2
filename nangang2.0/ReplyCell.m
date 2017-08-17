@@ -18,7 +18,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.backgroundColor = RGB(244, 244, 244);
-    self.content.preferredMaxLayoutWidth = ScreenWidth - 2*10;
+    self.content.preferredMaxLayoutWidth = ScreenWidth - 2*15;
     [self.content setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     [self.content makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(5);
