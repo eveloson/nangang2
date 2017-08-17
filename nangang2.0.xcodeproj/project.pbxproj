@@ -38,6 +38,9 @@
 		44D354371F428A3900459B2F /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D354361F428A3900459B2F /* CommentCell.m */; };
 		44D3543A1F44399F00459B2F /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D354391F44399F00459B2F /* AddCommentViewController.m */; };
 		44D3543D1F4531C900459B2F /* AddReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3543C1F4531C900459B2F /* AddReplyViewController.m */; };
+		44D354401F458EE000459B2F /* MyMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3543F1F458EE000459B2F /* MyMsgViewController.m */; };
+		44D354441F4594F200459B2F /* MyNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D354421F4594F200459B2F /* MyNewsCell.m */; };
+		44D354471F45953300459B2F /* MyNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44D354461F45953300459B2F /* MyNewsCell.xib */; };
 		44E325981F3856A2001E4C46 /* WDZAFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E325971F3856A2001E4C46 /* WDZAFNetworking.m */; };
 		44E3259B1F3856AD001E4C46 /* NodeFatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E3259A1F3856AD001E4C46 /* NodeFatherViewController.m */; };
 		44E3259F1F385C12001E4C46 /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E3259D1F385C12001E4C46 /* NewsCell.m */; };
@@ -258,6 +261,11 @@
 		44D354391F44399F00459B2F /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		44D3543B1F4531C900459B2F /* AddReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddReplyViewController.h; sourceTree = "<group>"; };
 		44D3543C1F4531C900459B2F /* AddReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddReplyViewController.m; sourceTree = "<group>"; };
+		44D3543E1F458EE000459B2F /* MyMsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMsgViewController.h; sourceTree = "<group>"; };
+		44D3543F1F458EE000459B2F /* MyMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMsgViewController.m; sourceTree = "<group>"; };
+		44D354411F4594F200459B2F /* MyNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNewsCell.h; sourceTree = "<group>"; };
+		44D354421F4594F200459B2F /* MyNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNewsCell.m; sourceTree = "<group>"; };
+		44D354461F45953300459B2F /* MyNewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNewsCell.xib; sourceTree = "<group>"; };
 		44E325961F3856A2001E4C46 /* WDZAFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDZAFNetworking.h; sourceTree = "<group>"; };
 		44E325971F3856A2001E4C46 /* WDZAFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDZAFNetworking.m; sourceTree = "<group>"; };
 		44E325991F3856AD001E4C46 /* NodeFatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeFatherViewController.h; sourceTree = "<group>"; };
@@ -850,6 +858,11 @@
 				44D3542F1F42862300459B2F /* ReplyCell.h */,
 				44D354301F42862300459B2F /* ReplyCell.m */,
 				44D354311F42862300459B2F /* ReplyCell.xib */,
+				44D3543E1F458EE000459B2F /* MyMsgViewController.h */,
+				44D3543F1F458EE000459B2F /* MyMsgViewController.m */,
+				44D354411F4594F200459B2F /* MyNewsCell.h */,
+				44D354421F4594F200459B2F /* MyNewsCell.m */,
+				44D354461F45953300459B2F /* MyNewsCell.xib */,
 			);
 			name = woyaokankanzhoubianshi;
 			sourceTree = "<group>";
@@ -1233,6 +1246,7 @@
 				745E75B01F20A24D00283B8C /* 02.png in Resources */,
 				7461ECAF1F2581EF0054F403 /* RegisterViewController.xib in Resources */,
 				7423D3E61F145D1200BA7D79 /* infor@2x.png in Resources */,
+				44D354471F45953300459B2F /* MyNewsCell.xib in Resources */,
 				74040AE61F3315AE009B246E /* chulisuqiuViewController.xib in Resources */,
 				742199A31F45820B008E8774 /* shouye@3x.png in Resources */,
 				745E75A61F208DA800283B8C /* pic.png in Resources */,
@@ -1362,10 +1376,12 @@
 				745E75C01F20AFD700283B8C /* WenTiViewController.m in Sources */,
 				446C4ED41F39945200E991FE /* LPDQuoteImagesView.m in Sources */,
 				745E76351F20B60900283B8C /* MJMethod.m in Sources */,
+				44D354401F458EE000459B2F /* MyMsgViewController.m in Sources */,
 				74534B621F41467C000AC5ED /* BSZNView.m in Sources */,
 				742B40FD1F307336000BF8E3 /* suqiuModel.m in Sources */,
 				7448E1231F346B3D003BD0D3 /* suModel.m in Sources */,
 				745E76091F20B5FC00283B8C /* MJRefreshAutoGifFooter.m in Sources */,
+				44D354441F4594F200459B2F /* MyNewsCell.m in Sources */,
 				7467A1051F42C682009E0B15 /* gerenxinxViewController.m in Sources */,
 				742B410C1F30A367000BF8E3 /* chakansuqiuViewController.m in Sources */,
 				44A092021F41A37F004B2DA4 /* Comment.m in Sources */,

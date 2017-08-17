@@ -79,6 +79,7 @@ int newsPageindex = 0;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"南港那些事儿";
     // Do any additional setup after loading the view.
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addMsg)];

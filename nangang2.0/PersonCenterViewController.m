@@ -9,7 +9,7 @@
 #import "PersonCenterViewController.h"
 #import "gerenxinxViewController.h"
 #import "guanyuwomenViewController.h"
-
+#import "MyMsgViewController.h"
 @interface PersonCenterViewController ()
 
 @end
@@ -102,7 +102,8 @@
 
 }
 -(void)btn3Action:(UIButton *)but{
-
+    MyMsgViewController *vc = [MyMsgViewController new];
+    push(vc);
 }
 -(void)btn4Action:(UIButton *)but{
 
