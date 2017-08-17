@@ -5,6 +5,7 @@
 //  Created by wubin on 2017/8/14.
 //  Copyright © 2017年 Zhou. All rights reserved.
 //
+#import "SJAvatarBrowser.h"
 #define kHeadTMargin 15
 #define kHeadH 40
 #define kContentTMargin 10
@@ -30,6 +31,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.title.textColor = RGB(87, 107, 149);
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     [self.head makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(15);
@@ -51,6 +53,12 @@
         //        make.height.equalTo(kContentH);
     }];
     for (int i=0; i<self.imageArray.count; i++) {
+        //为UIImageView1添加点击事件
+        UIImageView *image = self.imageArray[i];
+        UITapGestureRecognizer *tapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanBigImageClick1:)];
+        [image addGestureRecognizer:tapGestureRecognizer1];
+        //让UIImageView和它的父类开启用户交互属性
+        [image setUserInteractionEnabled:YES];
         [self.imageArray[i] makeConstraints:^(MASConstraintMaker *make) {
             if (i==0) {
                  make.top.equalTo(self.content.bottom).offset(kImageMargin);
@@ -86,6 +94,11 @@
 //    [self.comment setImagePositionWithType:SSImagePositionTypeLeft spacing:5];
 //    [self.zan setImagePositionWithType:SSImagePositionTypeLeft spacing:5];
 }
+-(void)scanBigImageClick1:(UITapGestureRecognizer *)tap{
+    NSLog(@"点击图片");
+    UIImageView *clickedImageView = (UIImageView *)tap.view;
+    [SJAvatarBrowser showImageWithImageView:clickedImageView];
+}
 - (void)setNewsInfo:(ZCFGDetail *)newsInfo{
     _newsInfo = newsInfo;
     self.title.text = newsInfo.Adder;
@@ -93,17 +106,16 @@
 //    self.time.text = newsInfo.fbTime;
     for (int i=0; i<self.imageArray.count; i++) {
         UIImageView *image = self.imageArray[i];
-        if (i<3)
-        {
+        if (i<newsInfo.ImgUrl.count) {
+            NSString *url = [NSString stringWithFormat:@"%@%@",ServerHost,newsInfo.ImgUrl[i]];
+            url = [url stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
+            [image sd_setImageWithURL:[NSURL URLWithString:url]];
             [image updateConstraints:^(MASConstraintMaker *make) {
-                make.height.equalTo(kImageHW);
+                make.height.width.equalTo(kImageHW);
             }];
-            [image sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502448586406&di=5a716ca57a945638b116e4510ca7f5cf&imgtype=0&src=http%3A%2F%2Fimg002.21cnimg.com%2Fphotos%2Fshe_0%2F20140717%2Fc100-0-0-477-445_r0%2F61FF69160D0AB0DB7E837160788B13D4.jpeg"]];
-        }
-        else
-        {
+        } else {
             [image updateConstraints:^(MASConstraintMaker *make) {
-                make.height.equalTo(0);
+                make.height.width.equalTo(0);
             }];
         }
     }

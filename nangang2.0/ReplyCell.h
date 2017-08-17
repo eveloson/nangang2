@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Comment.h"
 @interface ReplyCell : UITableViewCell
-
+@property (nonatomic, strong) Comment *comment;
 @end

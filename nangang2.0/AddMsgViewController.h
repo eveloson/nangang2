@@ -7,7 +7,7 @@
 //
 
 #import <XLForm/XLForm.h>
-#import "ZhouBianShiViewController.h"
+@class ZhouBianShiViewController;
 @interface AddMsgViewController : XLFormViewController
 @property (nonatomic, weak)  ZhouBianShiViewController *vc;
 @end
