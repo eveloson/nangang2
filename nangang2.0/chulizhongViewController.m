@@ -10,6 +10,7 @@
 #import "chulisuqiumodel.h"
 #import "chulizhongModel.h"
 #import "chulizhongView.h"
+#import "CLizhongCell.h"
 
 @interface chulizhongViewController ()<MBProgressHUDDelegate,UITableViewDelegate,UITableViewDataSource>
 {
@@ -162,35 +163,51 @@
     }];
     
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.clientArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    static NSString *resueId = @"resueId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:resueId];
-    UILabel *label;
-    UIButton *btn;
+//    static NSString *resueId = @"resueId";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:resueId];
+//    UILabel *label;
+//    UIButton *btn;
+//    if (!cell)
+//    {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:resueId];
+//        label = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, ScreenWidth - 25 - 70, 34)];
+//        [cell addSubview:label];
+//        btn = [[UIButton alloc]initWithFrame:CGRectMake(label.frame.origin.x + label.frame.size.width + 5, 5, 70, 34)];
+//        [cell addSubview:btn];
+//    }
+    CLizhongCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CLizhongCell"];
     if (!cell)
     {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:resueId];
-        label = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, ScreenWidth - 25 - 70, 34)];
-        [cell addSubview:label];
-        btn = [[UIButton alloc]initWithFrame:CGRectMake(label.frame.origin.x + label.frame.size.width + 5, 5, 70, 34)];
-        [cell addSubview:btn];
+        cell = [[CLizhongCell alloc]init];
+        NSArray *array = [[NSBundle mainBundle]loadNibNamed:@"CLizhongCell" owner:nil options:nil];
+        cell = [array lastObject];
     }
+
     chulisuqiumodel *model = [self.clientArray objectAtIndex:indexPath.row];
-    label.text = [NSString stringWithFormat:@"%@",model.Reason];
-    [btn setBackgroundImage:[UIImage imageNamed:@"24.PNG"] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageNamed:@"25.PNG"] forState:UIControlStateHighlighted];
-    [btn setTitle:@"查看" forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(btnchuliAction:) forControlEvents:UIControlEventTouchUpInside];
+    cell.nameL1.text = [NSString stringWithFormat:@"%@",model.Reason];
+    cell.nameL.text = [NSString stringWithFormat:@"%@",model.CreateTime];
+    cell.namel2.text = @"查看";
+    cell.namel2.textAlignment = 1;
+    cell.namel2.backgroundColor = ThemeColor;
+//    [btn setBackgroundImage:[UIImage imageNamed:@"24.PNG"] forState:UIControlStateNormal];
+//    [btn setBackgroundImage:[UIImage imageNamed:@"25.PNG"] forState:UIControlStateHighlighted];
+//    [btn setTitle:@"查看" forState:UIControlStateNormal];
+//    [btn addTarget:self action:@selector(btnchuliAction:) forControlEvents:UIControlEventTouchUpInside];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
     
 }
+
 -(void)btnchuliAction:(UIButton *)but{
     chulisuqiumodel *model = [self.clientArray objectAtIndex:but.tag];
     NSDictionary *dic1 = [[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN];
@@ -235,7 +252,51 @@
     
 
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    chulisuqiumodel *model = [self.clientArray objectAtIndex:indexPath.row];
+    NSDictionary *dic1 = [[NSUserDefaults standardUserDefaults]objectForKey:KEY_TOKEN];
+    NSString *userID = [dic1 objectForKey:@"userid"];
+    
+    [self.view showWarning:@""];
+    NSDictionary *param = @{@"Action":@"AskingHandleOrOkView",@"ID":model.ID};
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"text/plain", @"text/json", @"text/javascript", @"application/json", nil];
+    [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,@"/AjaxService/OperateHandler.ashx"] parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [dic objectForKey:@"result"];
+        [self.view hideBusyHUD];
+        NSLog(@"%@",dic);
+        if ([result isEqualToString:@"success"])
+        {
+            chulizhongModel *model1 = [chulizhongModel objectWithKeyValues:[[dic objectForKey:@"Rows"] objectAtIndex:0]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                chulizhongView *view = [[chulizhongView alloc]init];
+                
+                view.model = model;
+                view.model1 = model1;
+                [self.navigationController pushViewController:view animated:YES];
+            });
+        }
+        else
+        {    NSString *error = [dic objectForKey:@"tips"];
+            [self.view showWarning1:error];
+            
+            
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self.view hideBusyHUD];
+        [self.view showWarning1:[NSString stringWithFormat:@"%@",error]];
+        
+    }];
 
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

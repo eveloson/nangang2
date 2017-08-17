@@ -42,9 +42,9 @@
     if (!self.personController) {
         self.personController = [[PersonCenterViewController alloc] init];
     }
-    UIImage *indexImagepressed = [UIImage imageNamed:@"index_pressed.png"];
+    UIImage *indexImagepressed = [UIImage imageNamed:@"shouyeed.png"];
     indexImagepressed = [indexImagepressed imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIImage *indexImage = [UIImage imageNamed:@"index.png"];
+    UIImage *indexImage = [UIImage imageNamed:@"shouye.png"];
     indexImage = [indexImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.indexController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"首页" image:indexImage selectedImage:indexImagepressed];
 //    
@@ -59,9 +59,9 @@
 //    UIImage *dynamicImage = [UIImage imageNamed:@"dynamic.png"];
 //    dynamicImage = [dynamicImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 //    self.dynamicController.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"动态" image:dynamicImage selectedImage:dynamicImagepressed];
-    UIImage *personImagepressed = [UIImage imageNamed:@"personcenter_pressed.png"];
+    UIImage *personImagepressed = [UIImage imageNamed:@"gerened.png"];
     personImagepressed = [personImagepressed imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIImage *personImage = [UIImage imageNamed:@"personcenter.png"];
+    UIImage *personImage = [UIImage imageNamed:@"geren.png"];
     personImage = [personImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.personController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的" image:personImage selectedImage:personImagepressed];
     

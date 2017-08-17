@@ -60,13 +60,15 @@
     label6 = [[UILabel alloc]initWithFrame:CGRectMake(10, label5.frame.origin.y + label5.frame.size.height + 10, ScreenWidth - 20, 50)];
     label6.backgroundColor = [UIColor whiteColor];
     label6.text = [NSString stringWithFormat:@"%@",self.model1.Reason];
-    UIFont *font = [UIFont fontWithName:@"Arial" size:16];
-    //设置一个行高上限
-    CGSize size = CGSizeMake(ScreenWidth - 20,2000);
-    //计算实际frame大小，并将label的frame变成实际大小
-    CGSize labelsize = [label5.text sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+    label6.numberOfLines = 0;
+    CGSize size1 = [label6 sizeThatFits:CGSizeMake(ScreenWidth - 20, MAXFLOAT)];
+//    UIFont *font = [UIFont fontWithName:@"Arial" size:16];
+//    //设置一个行高上限
+//    CGSize size = CGSizeMake(ScreenWidth - 20,2000);
+//    //计算实际frame大小，并将label的frame变成实际大小
+//    CGSize labelsize = [label5.text sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
     //    label5.frame = CGRectMake(10, label5.frame.origin.y , ScreenWidth - 20, labelsize.height + 10);
-    label6.frame = CGRectMake(10, label5.frame.origin.y + label5.frame.size.height + 10, ScreenWidth - 20, labelsize.height + 10);
+    label6.frame = CGRectMake(10, label5.frame.origin.y + label5.frame.size.height + 10, ScreenWidth - 20, size1.height + 10);
     [myScrollView addSubview:label6];
     
     label7 = [[UILabel alloc]initWithFrame:CGRectMake(10, label6.frame.origin.y + label6.frame.size.height + 10, ScreenWidth - 20, 30)];

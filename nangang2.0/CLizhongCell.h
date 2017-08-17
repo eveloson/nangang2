@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CLizhongCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *nameL;
+@property (strong, nonatomic) IBOutlet UILabel *nameL1;
+@property (strong, nonatomic) IBOutlet UILabel *namel2;
 
 @end
