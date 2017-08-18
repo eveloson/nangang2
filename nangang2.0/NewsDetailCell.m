@@ -7,7 +7,7 @@
 //
 #import "SJAvatarBrowser.h"
 #define kHeadTMargin 15
-#define kHeadH 40
+
 #define kContentTMargin 10
 #define kContentH 50
 #define kImageLRMargin 30
@@ -36,7 +36,8 @@
     [self.head makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(15);
         make.top.equalTo(kHeadTMargin);
-        make.height.width.equalTo(kHeadH);
+        make.height.equalTo(kHeadH);
+        make.width.equalTo(0.001);
     }];
     [self.title makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.head.right).offset(10);

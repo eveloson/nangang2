@@ -84,6 +84,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.bounces = NO;
+    self.title = @"动态详情";
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([NewsDetailCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([NewsDetailCell class])];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CommentCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CommentCell class])];
     [self setupFooter];

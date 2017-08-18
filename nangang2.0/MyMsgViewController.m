@@ -53,7 +53,7 @@ int msgPageindex = 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MyNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MyNewsCell class])];
-    //    NewsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NewsCell class]) forIndexPath:indexPath];
+    cell.vc = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.newsInfo = self.dataSource[indexPath.section];
     return cell;

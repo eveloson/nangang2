@@ -8,7 +8,6 @@
 #import "MyMsgViewController.h"
 #import "MyNewsCell.h"
 #define kHeadTMargin 15
-#define kHeadH 40
 #define kContentTMargin 10
 #define kContentH 50
 #define kImageLRMargin 30
@@ -17,7 +16,7 @@
 #define kTimeH 40
 #import "NewsCell.h"
 #import <UIButton+SSEdgeInsets.h>
-@interface MyNewsCell ()
+@interface MyNewsCell ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *head;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *content;
@@ -32,23 +31,30 @@
 
 @implementation MyNewsCell
 - (IBAction)delBtnClick:(UIButton *)sender {
-    [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"tb_talkHandler.ashx?Action=deleteTalk"] parameters:@{@"Id":self.newsInfo.Id} success:^(id  _Nonnull json) {
-        if ([json[@"result"] isEqualToString:@"success"]) {
-            [self.vc refreshData];
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    } loadingMsg:nil errorMsg:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你确定要删除这条动态吗？" delegate:self cancelButtonTitle:nil otherButtonTitles:@"取消",@"确定", nil];
+    [alert show];
 }
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"tb_talkHandler.ashx?Action=deleteTalk"] parameters:@{@"Id":self.newsInfo.Id} success:^(id  _Nonnull json) {
+            if ([json[@"result"] isEqualToString:@"success"]) {
+                [self.vc refreshData];
+            }
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } loadingMsg:nil errorMsg:nil];
+    }
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     [self.head makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(15);
         make.top.equalTo(kHeadTMargin);
-        make.height.width.equalTo(kHeadH);
+        make.height.equalTo(kHeadH);
+        make.width.equalTo(0.001);
     }];
+    self.title.textColor = RGB(87, 107, 149);
     [self.title makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.head.right).offset(10);
         make.right.equalTo(0);

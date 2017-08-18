@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "nangang2.0/NewsCell.m"
-            timestampString = "524647104.557585"
+            timestampString = "524713315.841773"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-setNewsInfo:"
             landmarkType = "7">
          </BreakpointContent>
