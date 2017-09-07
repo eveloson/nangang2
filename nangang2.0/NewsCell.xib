@@ -63,6 +63,9 @@
                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <state key="highlighted" image="回复2"/>
+                        <connections>
+                            <action selector="commentClick:" destination="KGk-i7-Jjw" eventType="touchDown" id="3nk-U3-H2h"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Zd-NK-Zmq">
                         <rect key="frame" x="242" y="258" width="53" height="22"/>

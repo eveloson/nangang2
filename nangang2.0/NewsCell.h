@@ -10,4 +10,5 @@
 #import "ZCFGDetail.h"
 @interface NewsCell : UITableViewCell
 @property (nonatomic, strong) ZCFGDetail *newsInfo;
+@property (nonatomic, weak) UITableViewController *vc;
 @end

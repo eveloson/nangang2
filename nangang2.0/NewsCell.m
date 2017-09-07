@@ -14,6 +14,7 @@
 #define kTimeH 40
 #import "NewsCell.h"
 #import <UIButton+SSEdgeInsets.h>
+#import "AddCommentViewController.h"
 @interface NewsCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *head;
 @property (weak, nonatomic) IBOutlet UILabel *title;
@@ -135,5 +136,11 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     } loadingMsg:nil errorMsg:nil];
+}
+- (IBAction)commentClick:(UIButton *)sender {
+    AddCommentViewController *vc = [AddCommentViewController new];
+    vc.vc = self.vc;
+    vc.newsInfo = self.newsInfo;
+    [self.vc.navigationController pushViewController:vc animated:YES];
 }
 @end

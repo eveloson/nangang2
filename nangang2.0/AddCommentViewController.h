@@ -10,5 +10,5 @@
 @class ZCFGDetail,ZCFGDetailViewController;
 @interface AddCommentViewController : XLFormViewController
 @property (nonatomic, strong) ZCFGDetail *newsInfo;
-@property (nonatomic, weak) ZCFGDetailViewController *vc;
+@property (nonatomic, weak)  id vc;
 @end

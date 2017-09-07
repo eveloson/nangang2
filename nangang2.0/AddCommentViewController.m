@@ -5,7 +5,6 @@
 //  Created by wubin on 2017/8/16.
 //  Copyright © 2017年 Zhou. All rights reserved.
 //
-#import "ZCFGDetailViewController.h"
 #import "AddCommentViewController.h"
 #import "ZCFGDetail.h"
 @interface AddCommentViewController ()
@@ -66,7 +65,12 @@
     [WDZAFNetworking get:[NSString stringWithFormat:@"%@%@",ServerName,@"TabCommentHandler.ashx?Action=addComment"] parameters:param success:^(id  _Nonnull json) {
         if ([json[@"result"] isEqualToString:@"success"]) {
             self.newsInfo.commentcount++;
-            [self.vc setupComments];
+            if ([self.vc respondsToSelector:@selector(setupComments)]) {
+                [self.vc performSelector:@selector(setupComments)];
+            }
+            if ([self.vc respondsToSelector:@selector(refreshData)]) {
+                [self.vc performSelector:@selector(refreshData)];
+            }
             [self.navigationController popViewControllerAnimated:YES];
         } else {
             [SVProgressHUD showErrorWithStatus:@"发送失败，请重试"];
