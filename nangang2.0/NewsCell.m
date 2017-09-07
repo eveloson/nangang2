@@ -102,6 +102,38 @@
         }
     }
     [self.zan setTitle:[NSString stringWithFormat:@"%ld",newsInfo.zanmbiancount]  forState:UIControlStateNormal];
+    NSString *zanImageName = nil;
+    if (self.newsInfo.flag == 0) {
+        zanImageName = @"赞2";
+    } else {
+        zanImageName = @"赞1";
+    }
+    [self.zan setImage:[UIImage imageNamed:zanImageName] forState:UIControlStateNormal];
     [self.comment setTitle:[NSString stringWithFormat:@"%ld",newsInfo.commentcount] forState:UIControlStateNormal];
+}
+
+- (IBAction)zanClick:(UIButton *)sender {
+    NSString *method = nil;
+    if (self.newsInfo.flag == 0) {
+        method = @"addZan";
+    } else {
+        method = @"deleteZan";
+    }
+    [WDZAFNetworking get:[NSString stringWithFormat:@"%@TabZambiaHandler.ashx?Action=%@",ServerName,method] parameters:@{@"ParentId":self.newsInfo.Id,@"UserId":kUserID} success:^(id  _Nonnull json) {
+        if ([json[@"result"] isEqualToString:@"success"]) {
+            if (self.newsInfo.flag == 0) {
+                self.newsInfo.flag = 1;
+                self.newsInfo.zanmbiancount++;
+                [self.zan setImage:[UIImage imageNamed:@"赞1"] forState:UIControlStateNormal];
+            } else {
+                self.newsInfo.zanmbiancount--;
+                self.newsInfo.flag = 0;
+                [self.zan setImage:[UIImage imageNamed:@"赞2"] forState:UIControlStateNormal];
+            }
+            [self.zan setTitle:[NSString stringWithFormat:@"%ld",self.newsInfo.zanmbiancount] forState:UIControlStateNormal];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    } loadingMsg:nil errorMsg:nil];
 }
 @end

@@ -31,8 +31,10 @@
 #import "MBProgressHUD.h"
 #define HDT_MBPRGRESSBAR_NOTCANCEL 1001 //MBprogressbar 点击不能取消 必须等到调用【HUD hide】
 #define HOSTURL @"http://222.184.127.50:10070"
-#define ServerName @"http://192.168.2.201:50485/AjaxService/"
-#define ServerHost @"http://192.168.2.201:50485"
+//#define ServerName @"http://192.168.2.201:50485/AjaxService/"
+//#define ServerHost @"http://192.168.2.201:50485"
+#define ServerName @"http://222.184.127.50:10070/AjaxService/"
+#define ServerHost @"http://222.184.127.50:10070"
 #define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 
 #define RGB(r, g, b) RGBA(r, g, b, 1.0f)
